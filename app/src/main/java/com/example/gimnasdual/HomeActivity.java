@@ -78,7 +78,7 @@ public class HomeActivity extends AppCompatActivity {
                             case R.id.navView_secc5:
                                 Toast.makeText(HomeActivity.this, menuItem.getTitle(), Toast.LENGTH_SHORT).show();
                                 break;
-                        }git
+                        }
                         drawerLayout.closeDrawers();
                         return true;
                     }
