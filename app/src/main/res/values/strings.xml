@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">GimnasDual</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="entrar">Entrar</string>
+    <string name="gimnasdual">GimnasDual</string>
+    <string name="configuraci">Configuració</string>
+    <string name="categories">Categories</string>
+    <string name="esdeveniments">Esdeveniments</string>
+    <string name="sales">Sales</string>
+</resources>

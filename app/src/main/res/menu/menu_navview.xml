@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/navView_secc1"
+            android:title="@string/categories"/>
+
+        <item
+            android:id="@+id/navView_secc2"
+            android:title="@string/esdeveniments"/>
+
+        <item
+            android:id="@+id/navView_secc3"
+            android:title="@string/sales"/>
+
+        <item
+            android:id="@+id/navView_subheader"
+            android:title="Lorem ipsum muspi meroL">
+            <menu>
+
+                <item
+                    android:id="@+id/navView_secc4"
+                    android:title="Lorem ipsum 4"/>
+
+                <item
+                    android:id="@+id/navView_secc5"
+                    android:title="Lorem ipsum 5"/>
+
+            </menu>
+        </item>
+
+    </group>
+</menu>
