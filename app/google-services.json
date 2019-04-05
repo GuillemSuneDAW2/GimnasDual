@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "551894299733",
+    "firebase_url": "https://gimnasdual.firebaseio.com",
+    "project_id": "gimnasdual",
+    "storage_bucket": "gimnasdual.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551894299733:android:13a40b77b3817bef",
+        "android_client_info": {
+          "package_name": "com.example.gimnasdual"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551894299733-rujq5b0jl3fdgc0tf1ico1p0dc3qdce9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gimnasdual",
+            "certificate_hash": "89cb001421ada604757e85f5ed8b95c021f72e84"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACrSvM4KrzGZjMK8em3wNcEoa-T49gazw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551894299733-r5r4lpa06k96tvi6tcprisifccanuj2a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
