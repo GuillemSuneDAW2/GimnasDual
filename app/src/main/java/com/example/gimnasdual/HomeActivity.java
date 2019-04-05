@@ -22,7 +22,7 @@ public class HomeActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navView;
     private int provaMerge = 0;
-    //asldkjfhaslkdfblksjfhlashaslkjhfñsadjkghlawkhgañ
+    private int prova2Merge2 = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
