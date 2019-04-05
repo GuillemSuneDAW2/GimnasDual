@@ -21,7 +21,8 @@ public class HomeActivity extends AppCompatActivity {
     private Toolbar appbar;
     private DrawerLayout drawerLayout;
     private NavigationView navView;
-//Hola prova1 del merge
+    private int provaMerge = 0;
+    //asldkjfhaslkdfblksjfhlashaslkjhfñsadjkghlawkhgañ
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
