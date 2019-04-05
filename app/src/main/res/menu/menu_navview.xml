@@ -16,7 +16,7 @@
 
         <item
             android:id="@+id/navView_subheader"
-            android:title="Lorem ipsum muspi meroL">
+            android:title="@string/chat">
             <menu>
 
                 <item
