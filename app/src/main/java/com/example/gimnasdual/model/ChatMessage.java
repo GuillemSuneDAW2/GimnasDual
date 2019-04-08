@@ -13,21 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.gimnasdual.Classes;
+package com.example.gimnasdual.model;
 
 public class ChatMessage {
 
     private String text;
     private String name;
-    private String photoUrl;
 
     public ChatMessage() {
     }
 
-    public ChatMessage(String text, String name, String photoUrl) {
+    public ChatMessage(String text, String name) {
         this.text = text;
         this.name = name;
-        this.photoUrl = photoUrl;
     }
 
     public String getText() {
@@ -46,11 +44,4 @@ public class ChatMessage {
         this.name = name;
     }
 
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
-
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
-    }
 }
