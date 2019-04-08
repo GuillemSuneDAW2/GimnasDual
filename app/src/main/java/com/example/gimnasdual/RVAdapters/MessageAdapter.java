@@ -28,6 +28,10 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
 
         ChatMessage message = getItem(position);
 
+        messageTextView.setVisibility(View.VISIBLE);
+        messageTextView.setText(message.getText());
+        authorTextView.setText(message.getName());
+
         return convertView;
     }
 }

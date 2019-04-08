@@ -1,6 +1,8 @@
 package com.example.gimnasdual.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -17,6 +19,8 @@ import com.example.gimnasdual.RVAdapters.MessageAdapter;
 import com.example.gimnasdual.model.ChatMessage;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -50,16 +54,16 @@ public class ChatFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
         mUsername = ANONYMOUS;
-        FirebaseApp.initializeApp(this.getContext());
+        FirebaseApp.initializeApp(inflater.getContext());
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
         mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("messages");
 
         mMessageListView = (ListView) view.findViewById(R.id.messageListView);
         mMessageEditText = (EditText) view.findViewById(R.id.messageEditText);
         mSendButton = (Button) view.findViewById(R.id.sendButton);
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
 
         List<ChatMessage> friendlyMessages = new ArrayList<>();
-        mMessageAdapter = new MessageAdapter(this.getContext(), R.layout.item_message, friendlyMessages);
+        mMessageAdapter = new MessageAdapter(getContext(), R.layout.item_message, friendlyMessages);
         mMessageListView.setAdapter(mMessageAdapter);
 
         mMessageEditText.addTextChangedListener(new TextWatcher() {
@@ -100,6 +104,37 @@ public class ChatFragment extends Fragment {
                 mMessageEditText.setText("");
             }
         });
+        mChildEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                //Passem per par`metre perquè deserialitzi el Pojo.
+                ChatMessage friendlyMessage = dataSnapshot.getValue(ChatMessage.class);
+                mMessageAdapter.add(friendlyMessage);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+
+
+        mMessagesDatabaseReference.addChildEventListener(mChildEventListener);
 
         // Inflate the layout for this fragment
         return view;

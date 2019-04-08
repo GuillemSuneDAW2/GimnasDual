@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.gimnasdual.fragments.CategoriesFragment;
+import com.example.gimnasdual.fragments.ChatFragment;
 import com.example.gimnasdual.fragments.EsdevenimentsFragment;
 import com.example.gimnasdual.fragments.SalesFragment;
 
@@ -73,7 +74,13 @@ public class HomeActivity extends AppCompatActivity {
                                 getSupportActionBar().setTitle(menuItem.getTitle());
                                 break;
                             case R.id.navView_secc4:
-                                Toast.makeText(HomeActivity.this, menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+                                fragment = new ChatFragment();
+                                getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.content_frame, fragment).addToBackStack("chat")
+                                        .commit();
+
+                                menuItem.setChecked(true);
+                                getSupportActionBar().setTitle(menuItem.getTitle());
                                 break;
                             case R.id.navView_secc5:
                                 Toast.makeText(HomeActivity.this, menuItem.getTitle(), Toast.LENGTH_SHORT).show();
