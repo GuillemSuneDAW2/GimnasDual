@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.gimnasdual.R;
-import com.example.gimnasdual.fragments.ChatFragment;
 import com.example.gimnasdual.model.ChatMessage;
 
 import java.util.List;

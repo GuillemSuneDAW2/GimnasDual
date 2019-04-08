@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import com.example.gimnasdual.R;
 import com.example.gimnasdual.RVAdapters.RVcategories;
 import com.example.gimnasdual.model.*;
+import com.example.gimnasdual.remote.APIService;
+import com.example.gimnasdual.remote.ApiUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,8 @@ public class CategoriesFragment extends Fragment {
     View rootView;
     List<Categoria> categoriaList;
     RecyclerView rv;
+
+    private APIService mAPIService;
 
     public CategoriesFragment() {
         // Required empty public constructor
@@ -32,6 +36,9 @@ public class CategoriesFragment extends Fragment {
         rv = rootView.findViewById(R.id.rv_categories);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
+        mAPIService = ApiUtils.getAPIService();
+
         initData();
         initAdapter();
         return rootView;
@@ -48,4 +55,25 @@ public class CategoriesFragment extends Fragment {
         categoriaList.add(new Categoria(2, "Categ2", R.drawable.ic_menu_black_24dp));
         categoriaList.add(new Categoria(3, "Categ3", R.drawable.ic_menu_black_24dp));
     }
+    /*
+    private void initData() {
+        categoriaList = new ArrayList<>();
+        mAPIService.registerEmployee(name, job).enqueue(new Callback<ResponseRegister>() {
+            // When there's response, even if it is an error
+            @Override
+            public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
+                if(response.isSuccessful()) {
+                    Toast.makeText(MainActivity.this, R.string.registre_ok, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "No s'ha afegit", Toast.LENGTH_SHORT).show();
+                }
+            }
+            // When the connection fails
+            @Override
+            public void onFailure(Call<ResponseRegister> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Can't connect", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    */
 }
