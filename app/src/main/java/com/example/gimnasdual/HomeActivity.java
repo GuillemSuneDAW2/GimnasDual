@@ -1,17 +1,18 @@
 package com.example.gimnasdual;
 
 import android.app.FragmentManager;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.gimnasdual.AsyncTask.DownloadTask;
 import com.example.gimnasdual.fragments.CategoriesFragment;
 import com.example.gimnasdual.fragments.ChatFragment;
 import com.example.gimnasdual.fragments.EsdevenimentsFragment;
@@ -22,6 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     private Toolbar appbar;
     private DrawerLayout drawerLayout;
     private NavigationView navView;
+    private DownloadTask mMyTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,4 +121,12 @@ public class HomeActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    /*
+    Carregar imatges AsyncTask
+    public void LoadImage() {
+        mMyTask = new DownloadTask(imatges);
+        mMyTask.execute();
+        Toast.makeText(this, "Logo descarregat amb AsyncTask", Toast.LENGTH_SHORT).show();
+
+    }*/
 }
