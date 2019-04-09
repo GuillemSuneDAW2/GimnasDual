@@ -10,6 +10,7 @@
     tools:context=".MainActivity">
 
     <include layout="@layout/content_layout" />
+    <include layout="@layout/imageviews" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navview"

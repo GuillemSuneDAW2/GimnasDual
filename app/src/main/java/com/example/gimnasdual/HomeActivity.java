@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.gimnasdual.AsyncTask.DownloadTask;
@@ -24,11 +25,16 @@ public class HomeActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navView;
     private DownloadTask mMyTask;
+    private ImageView[] imatges = new ImageView[1];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        imatges[0] = findViewById(R.id.imageViewLogo);
+
+        LoadImage();
 
         appbar = findViewById(R.id.appbar);
         setSupportActionBar(appbar);
@@ -121,12 +127,12 @@ public class HomeActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    /*
-    Carregar imatges AsyncTask
+
+    //Carregar imatges AsyncTask
     public void LoadImage() {
         mMyTask = new DownloadTask(imatges);
         mMyTask.execute();
         Toast.makeText(this, "Logo descarregat amb AsyncTask", Toast.LENGTH_SHORT).show();
 
-    }*/
+    }
 }
