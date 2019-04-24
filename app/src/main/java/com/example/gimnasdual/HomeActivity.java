@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
 
         imatges[0] = findViewById(R.id.imageViewLogo);
 
-        LoadImage();
+        //LoadImage();
 
         appbar = findViewById(R.id.appbar);
         setSupportActionBar(appbar);
