@@ -15,8 +15,9 @@
             android:title="@string/sales"/>
 
         <item
+            android:enabled="false"
             android:id="@+id/navView_subheader"
-            android:title="subheader">
+            android:title="@string/secci_socis">
             <menu>
 
                 <item

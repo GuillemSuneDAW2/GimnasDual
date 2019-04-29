@@ -1,5 +1,7 @@
 package com.example.gimnasdual.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -30,7 +32,7 @@ import java.util.List;
 public class ChatFragment extends Fragment {
     private static final String TAG = "MainActivity";
 
-    public static final String ANONYMOUS = "anonymous";
+    public static  String ANONYMOUS = "anonymous";
     public static final int DEFAULT_MSG_LENGTH_LIMIT = 1000;
 
     private ListView mMessageListView;
@@ -53,6 +55,7 @@ public class ChatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
+        getSavedMessage();
         mUsername = ANONYMOUS;
         FirebaseApp.initializeApp(inflater.getContext());
         mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -138,5 +141,15 @@ public class ChatFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return view;
+    }
+    public void getSavedMessage(){
+        Context context = getContext();
+
+        SharedPreferences sharedPref = context.getSharedPreferences("KEY", Context.MODE_PRIVATE);
+        String lastMessage = sharedPref.getString("1", "");
+
+        if (!lastMessage.equals("")){
+            ANONYMOUS = lastMessage;
+        }
     }
 }

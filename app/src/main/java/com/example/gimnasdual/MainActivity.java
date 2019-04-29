@@ -1,6 +1,8 @@
 package com.example.gimnasdual;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +12,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
+
+    private String KEY_LASTMESSAGE = "KEY";
+    private String KEY_SHAREDPREF = "1";
 
     LinearLayout mLl_loginFields;
     Button mBtn_open;
@@ -44,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                     params.width = LinearLayout.LayoutParams.WRAP_CONTENT;
                     params.height = LinearLayout.LayoutParams.WRAP_CONTENT;
                     mLl_loginFields.setLayoutParams(params);
+
+
                     loginIsOpen = true;
                 }
             }
@@ -52,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         mBtn_enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                saveMessage();
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
@@ -65,5 +73,27 @@ public class MainActivity extends AppCompatActivity {
         mEt_password = findViewById(R.id.login_et_password);
 
         mBtn_enter = findViewById(R.id.login_btn_enter);
+
+        getSavedMessage();
+
+    }
+    public void saveMessage(){
+        if (!mEt_user.getText().toString().equals("")){
+            Context context = getApplicationContext();
+            SharedPreferences sharedPref = context.getSharedPreferences(KEY_LASTMESSAGE, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString(KEY_SHAREDPREF, mEt_user.getText().toString());
+            editor.commit();
+        }
+    }
+    public void getSavedMessage(){
+        Context context = getApplicationContext();
+
+        SharedPreferences sharedPref = context.getSharedPreferences(KEY_LASTMESSAGE, Context.MODE_PRIVATE);
+        String lastMessage = sharedPref.getString(KEY_SHAREDPREF, "");
+
+        if (!lastMessage.equals("")){
+            mEt_user.setText(lastMessage);
+        }
     }
 }

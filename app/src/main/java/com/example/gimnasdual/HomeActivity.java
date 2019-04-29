@@ -1,6 +1,8 @@
 package com.example.gimnasdual;
 
 import android.app.FragmentManager;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -10,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -20,6 +23,8 @@ import com.example.gimnasdual.fragments.EsdevenimentsFragment;
 import com.example.gimnasdual.fragments.SalesFragment;
 
 public class HomeActivity extends AppCompatActivity {
+
+
 
     private Toolbar appbar;
     private DrawerLayout drawerLayout;
@@ -45,6 +50,11 @@ public class HomeActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
 
         navView = findViewById(R.id.navview);
+
+        //Menu navViewMenu = navView.getMenu().getItem(R.id.navView_subheader)
+        //navView.getMenu().findItem(R.id.navView_subheader).setEnabled(true);
+        getSavedMessage();
+
         navView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -134,5 +144,16 @@ public class HomeActivity extends AppCompatActivity {
         mMyTask.execute();
         Toast.makeText(this, "Logo descarregat amb AsyncTask", Toast.LENGTH_SHORT).show();
 
+    }
+    public void getSavedMessage(){
+
+        Context context = getApplicationContext();
+
+        SharedPreferences sharedPref = context.getSharedPreferences("KEY", Context.MODE_PRIVATE);
+        String lastMessage = sharedPref.getString("1", "");
+
+        if (!lastMessage.equals("")){
+            navView.getMenu().findItem(R.id.navView_subheader).setEnabled(true);
+        }
     }
 }
