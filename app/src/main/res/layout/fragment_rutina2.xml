@@ -62,14 +62,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Afegir" />
+                    android:text="Afegir"
+                    android:background="@drawable/border_buttons"/>
 
                 <Button
                     android:id="@+id/btn_removeExercici"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Esborrar" />
+                    android:text="Esborrar"
+                    android:background="@drawable/border_buttons" />
 
 
             </LinearLayout>
@@ -135,21 +137,24 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:padding="5dp"
-                        android:text="Afegir" />
+                        android:text="Afegir"
+                        android:background="@drawable/border_buttons"/>
 
                     <Button
                         android:id="@+id/btn_updateSerie"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Modificar" />
+                        android:text="Modificar"
+                        android:background="@drawable/border_buttons"/>
 
                     <Button
                         android:id="@+id/btn_removeSerie"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Esborrar" />
+                        android:text="Esborrar"
+                        android:background="@drawable/border_buttons"/>
 
                 </LinearLayout>
 

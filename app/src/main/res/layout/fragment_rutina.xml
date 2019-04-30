@@ -25,7 +25,6 @@
         <ListView
             android:id="@+id/workout_lv_dates"
             android:layout_width="match_parent"
-            android:background="#fff"
             android:layout_height="350dp" />
 
         <LinearLayout
@@ -40,6 +39,7 @@
                 android:id="@+id/btn_addDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border_buttons"
                 android:text="Afegir" />
 
         </LinearLayout>
