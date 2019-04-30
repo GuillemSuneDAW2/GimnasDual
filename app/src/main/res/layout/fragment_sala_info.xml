@@ -29,46 +29,57 @@
             android:id="@+id/lbNom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/nomSalaInfo" />
+            android:text="@string/nomSalaInfo"
+            android:textSize="@dimen/tamanyText"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_NomSala"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:paddingLeft="15dp"
-            android:paddingTop="5dp" />
+            android:paddingTop="5dp"
+            android:textSize="@dimen/tamanyText"  />
 
         <TextView
             android:id="@+id/lbAforament"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/aforamentSalaInfo" />
+            android:text="@string/aforamentSalaInfo"
+            android:textSize="@dimen/tamanyText"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_Aformanet"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:paddingLeft="15dp"
-            android:paddingTop="5dp" />
+            android:paddingTop="5dp"
+            android:textSize="@dimen/tamanyText"  />
 
         <TextView
             android:id="@+id/lbCodi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/codiSalaInfo" />
+            android:text="@string/codiSalaInfo"
+            android:textSize="@dimen/tamanyText"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_CodiSala"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:paddingLeft="15dp"
-            android:paddingTop="5dp" />
+            android:paddingTop="5dp"
+            android:textSize="@dimen/tamanyText" />
 
         <TextView
             android:id="@+id/lbDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/descripcio" />
+            android:text="@string/descripcio"
+            android:textSize="@dimen/tamanyText"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_DescSala"
@@ -77,6 +88,7 @@
             android:ems="10"
             android:gravity="start|top"
             android:paddingLeft="15dp"
-            android:paddingTop="5dp" />
+            android:paddingTop="5dp"
+            android:textSize="@dimen/tamanyText" />
     </LinearLayout>
 </LinearLayout>

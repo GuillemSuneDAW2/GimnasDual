@@ -29,59 +29,73 @@
             android:id="@+id/lbNom"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:text="@string/nomEsdevAct" />
+            android:text="@string/nomEsdevAct"
+            android:textSize="@dimen/tamanyText"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_Nom"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:paddingLeft="15dp"
-            android:paddingTop="5dp" />
+            android:paddingTop="5dp"
+            android:textSize="@dimen/tamanyText"/>
 
         <TextView
             android:id="@+id/lbTipus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tipusEsdevInfo" />
+            android:text="@string/tipusEsdevInfo"
+            android:textSize="@dimen/tamanyText"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_Tipus"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:paddingLeft="15dp"
-            android:paddingTop="5dp" />
+            android:paddingTop="5dp"
+            android:textSize="@dimen/tamanyText" />
 
         <TextView
             android:id="@+id/lbData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/dataEsdevInfo" />
+            android:text="@string/dataEsdevInfo"
+            android:textSize="@dimen/tamanyText"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_Data"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:paddingLeft="15dp"
-            android:paddingTop="5dp" />
+            android:paddingTop="5dp"
+            android:textSize="@dimen/tamanyText"/>
 
         <TextView
             android:id="@+id/lbLloc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/llocEsdevInfo" />
+            android:text="@string/llocEsdevInfo"
+            android:textSize="@dimen/tamanyText"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_Lloc"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:paddingLeft="15dp"
-            android:paddingTop="5dp" />
+            android:paddingTop="5dp"
+            android:textSize="@dimen/tamanyText"/>
 
         <TextView
             android:id="@+id/lbDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/descripcio" />
+            android:text="@string/descripcio"
+            android:textSize="@dimen/tamanyText"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_desc"
@@ -90,6 +104,7 @@
             android:ems="10"
             android:gravity="start|top"
             android:paddingLeft="15dp"
-            android:paddingTop="5dp" />
+            android:paddingTop="5dp"
+            android:textSize="@dimen/tamanyText"/>
     </LinearLayout>
 </LinearLayout>

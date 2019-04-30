@@ -6,6 +6,8 @@
     <item
         android:id="@+id/action_settings"
         android:title="@string/configuraci"
+        android:icon="@drawable/exit_app"
+        android:onClick="exitApp"
         android:orderInCategory="100"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 </menu>

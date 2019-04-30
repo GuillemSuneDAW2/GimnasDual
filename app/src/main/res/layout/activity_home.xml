@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/backgroundTextBox">
 
     <include layout="@layout/content_layout" />
 

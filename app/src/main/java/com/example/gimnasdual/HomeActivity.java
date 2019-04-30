@@ -157,7 +157,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -180,5 +180,10 @@ public class HomeActivity extends AppCompatActivity {
         if (!lastMessage.equals("")){
             isSoci = true;
         }
+    }
+    public void exitApp(MenuItem item) {
+        //Intent intentStart = new Intent(getApplicationContext(), MainActivity.class);
+        //startActivity(intentStart);
+        finish();
     }
 }

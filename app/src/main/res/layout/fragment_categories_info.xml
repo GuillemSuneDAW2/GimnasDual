@@ -28,7 +28,9 @@
             android:id="@+id/lbNom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/nomActInfo" />
+            android:text="@string/nomActInfo"
+            android:textSize="@dimen/tamanyText"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_NomAct3"
@@ -36,13 +38,16 @@
             android:layout_height="64dp"
             android:layout_gravity="center"
             android:paddingLeft="15dp"
-            android:paddingTop="5dp" />
+            android:paddingTop="5dp"
+            android:textSize="@dimen/tamanyText"/>
 
         <TextView
             android:id="@+id/lbTipus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tipusActInfo" />
+            android:text="@string/tipusActInfo"
+            android:textSize="@dimen/tamanyText"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_TipusAct"
@@ -51,13 +56,15 @@
             android:layout_gravity="center"
             android:paddingLeft="15dp"
             android:paddingTop="5dp"
-            android:textSize="16sp" />
+            android:textSize="@dimen/tamanyText" />
 
         <TextView
             android:id="@+id/lbIntensitat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/intensitatActInfo" />
+            android:text="@string/intensitatActInfo"
+            android:textSize="@dimen/tamanyText"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_Intensitat"
@@ -65,13 +72,16 @@
             android:layout_height="64dp"
             android:layout_gravity="center"
             android:paddingLeft="15dp"
-            android:paddingTop="5dp" />
+            android:paddingTop="5dp"
+            android:textSize="@dimen/tamanyText"/>
 
         <TextView
             android:id="@+id/lbDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/descripcio" />
+            android:text="@string/descripcio"
+            android:textSize="@dimen/tamanyText"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_DescAct"
@@ -81,7 +91,8 @@
             android:ems="10"
             android:gravity="start|top"
             android:paddingLeft="15dp"
-            android:paddingTop="5dp" />
+            android:paddingTop="5dp"
+            android:textSize="@dimen/tamanyText" />
     </LinearLayout>
 
 </LinearLayout>
