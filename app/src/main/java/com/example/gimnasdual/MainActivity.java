@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
                     params.width = LinearLayout.LayoutParams.WRAP_CONTENT;
                     params.height = LinearLayout.LayoutParams.WRAP_CONTENT;
                     mLl_loginFields.setLayoutParams(params);
-
-
                     loginIsOpen = true;
                 }
             }
@@ -59,9 +58,21 @@ public class MainActivity extends AppCompatActivity {
         mBtn_enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveMessage();
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
+                if(loginIsOpen){
+                    if(!mEt_user.getText().equals("") || !mEt_password.getText().equals("")){
+                        saveMessage();
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        startActivity(intent);
+                    }
+                    Toast.makeText(MainActivity.this, "Usuari o contraseña incorrectes", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    mEt_user.setText("");
+                    saveMessage();
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
     }
