@@ -1,8 +1,16 @@
 package com.example.gimnasdual.remote;
 
+import com.example.gimnasdual.data.ResponseActivitatDirigida;
+import com.example.gimnasdual.data.ResponseCategoriaActivitat;
 import com.example.gimnasdual.data.ResponseDiaNoHabil;
+import com.example.gimnasdual.data.ResponseEsdeveniment;
+import com.example.gimnasdual.data.ResponseInscripcions;
+import com.example.gimnasdual.data.ResponseSala;
+import com.example.gimnasdual.data.ResponseSessios;
+import com.example.gimnasdual.data.ResponseSoci;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
 
 public interface APIService {
@@ -18,5 +26,40 @@ public interface APIService {
     @GET("api/diaNoHabilsTot")
     Call<ResponseDiaNoHabil> getDiesNoHabils();
 
+    @GET("api/sessiosTot")
+    Call<ResponseSessios> getSessios();
 
+    @GET("api/activitatDirigidasAndroid")
+    Call<ResponseActivitatDirigida> getActivitatDirigidaCateg(@Field("id") int id);
+
+    @GET("api/activitatDirigidasAndroid")
+    Call<ResponseActivitatDirigida> getActivitatDirigidaTot();
+
+    @GET("api/activitatDirigidasAndroid")
+    Call<ResponseActivitatDirigida> getActivitatDirigida(@Field("id") int id);
+
+    @GET("api/salasAndroid")
+    Call<ResponseSala> getSalaTot();
+
+    @GET("api/salasAndroid")
+    Call<ResponseSala> getSala(@Field("id") int id);
+
+    @GET("api/categoriaActivitatAndroid")
+    Call<ResponseCategoriaActivitat> getActCateg();
+
+    @GET("api/esdevenimentsTot")
+    Call<ResponseEsdeveniment> getEsdevenimentTot();
+
+    @GET("api/esdevenimentsTot")
+    Call<ResponseEsdeveniment> getEsdeveniment(@Field("id") int id);
+
+    @GET("api/inscripcionsAndroid")
+    Call<ResponseInscripcions> getInscripcio(@Field("id") int id);
+
+    @GET("api/sessiosTot")
+    Call<ResponseSessios> getSessio();
+
+    @GET("api/socisAndroid")
+    Call<ResponseSoci> doLoginSocis(@Field("email") String email,
+                                @Field("dni") String dni);
 }
