@@ -9,6 +9,8 @@ import com.example.gimnasdual.data.ResponseSala;
 import com.example.gimnasdual.data.ResponseSessios;
 import com.example.gimnasdual.data.ResponseSoci;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
@@ -27,7 +29,7 @@ public interface APIService {
     Call<ResponseDiaNoHabil> getDiesNoHabils();
 
     @GET("api/sessiosTot")
-    Call<ResponseSessios> getSessios();
+    Call<List<ResponseSessios>> getSessios();
 
     @GET("api/activitatDirigidasAndroid")
     Call<ResponseActivitatDirigida> getActivitatDirigidaCateg(@Field("id") int id);
@@ -56,10 +58,9 @@ public interface APIService {
     @GET("api/inscripcionsAndroid")
     Call<ResponseInscripcions> getInscripcio(@Field("id") int id);
 
-    @GET("api/sessiosTot")
-    Call<ResponseSessios> getSessio();
-
-    @GET("api/socisAndroid")
+    @GET("api/sociAndroid")
     Call<ResponseSoci> doLoginSocis(@Field("email") String email,
                                 @Field("dni") String dni);
+
+
 }

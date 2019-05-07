@@ -3,14 +3,25 @@ package com.example.gimnasdual;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.example.gimnasdual.data.ResponseSessios;
+import com.example.gimnasdual.remote.APIService;
+import com.example.gimnasdual.remote.ApiUtils;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,21 +69,7 @@ public class MainActivity extends AppCompatActivity {
         mBtn_enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(loginIsOpen){
-                    if(!mEt_user.getText().equals("") || !mEt_password.getText().equals("")){
-                        saveMessage();
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                        startActivity(intent);
-                    }
-                    Toast.makeText(MainActivity.this, "Usuari o contraseña incorrectes", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    mEt_user.setText("");
-                    saveMessage();
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
-                }
-
+                getSoci(v);
             }
         });
     }
@@ -106,5 +103,38 @@ public class MainActivity extends AppCompatActivity {
         if (!lastMessage.equals("")){
             mEt_user.setText(lastMessage);
         }
+    }
+    public void getSoci (View view) {
+        //mEt_user.getText().toString(), mEt_password.getText().toString()
+        APIService mAPIService = ApiUtils.getAPIService();
+        mAPIService.getSessios()
+                .enqueue(new Callback<List<ResponseSessios>>() {
+                    //Si la connexió no s'ha perdut i la comunicació ha estat correcte.
+                    //Entra a l'onResponse encara que torni un codi de no haver trobat res.
+
+                    @Override
+                    public void onResponse(Call<List<ResponseSessios>> call, Response<List<ResponseSessios>> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(MainActivity.this, String.valueOf(response.body().size()), Toast.LENGTH_SHORT).show();
+                            if (loginIsOpen) {
+                                Toast.makeText(MainActivity.this, "b", Toast.LENGTH_SHORT).show();
+                                saveMessage();
+                                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                startActivity(intent);
+                            } else {
+                                mEt_user.setText("");
+                                saveMessage();
+                                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                startActivity(intent);
+                            }
+                        }
+                    }
+                    // Si peta la connexió a Internet.
+                    @Override
+                    public void onFailure(Call<List<ResponseSessios>> call, Throwable t) {
+                        Log.d("ErrorLogResponses", t.toString());
+                        Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }
