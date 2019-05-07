@@ -47,11 +47,11 @@ public interface APIService {
     @GET("api/salasAndroid")
     Call<ResponseSala> getSala(@Field("id") int id);
 
-    @GET("api/categoriaActivitatAndroid")
-    Call<ResponseCategoriaActivitat> getActCateg();
+    @GET("api/categoriaActivitatsAndroid")
+    Call<List<ResponseCategoriaActivitat>> getActCateg();
 
     @GET("api/esdevenimentsTot")
-    Call<ResponseEsdeveniment> getEsdevenimentTot();
+    Call<List<ResponseEsdeveniment>> getEsdevenimentTot();
 
     @GET("api/esdevenimentsTot")
     Call<ResponseEsdeveniment> getEsdeveniment(@Field("id") int id);
