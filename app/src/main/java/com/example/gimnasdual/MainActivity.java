@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.gimnasdual.data.ResponseSessios;
+import com.example.gimnasdual.data.ResponseSoci;
 import com.example.gimnasdual.remote.APIService;
 import com.example.gimnasdual.remote.ApiUtils;
 
@@ -24,10 +24,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
+    private String nomUsuariChat = "";
     private String KEY_LASTMESSAGE = "KEY";
     private String KEY_SHAREDPREF = "1";
-
+    private boolean isSuccesful = false;
     LinearLayout mLl_loginFields;
     Button mBtn_open;
     boolean loginIsOpen = false;
@@ -66,17 +66,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // Enter the application
+        mBtn_open.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEt_user.setText("");
+                saveMessage();
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
         mBtn_enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getSoci(v);
+                if(!mEt_user.getText().toString().equals("") && !mEt_password.getText().toString().equals("")) {
+                    getSoci(v);
+                } else {
+                    Toast.makeText(MainActivity.this, "Hi han camps buits!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
     private void loadViews() {
-        mLl_loginFields = findViewById(R.id.login_ll_loginFields);
-        mBtn_open = findViewById(R.id.login_btn_open);
+        mBtn_open = findViewById(R.id.login_btn_offline);
         mEt_user = findViewById(R.id.login_et_user);
         mEt_password = findViewById(R.id.login_et_password);
 
@@ -91,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences sharedPref = context.getSharedPreferences(KEY_LASTMESSAGE, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString(KEY_SHAREDPREF, mEt_user.getText().toString());
+            editor.putString("2", nomUsuariChat);
             editor.commit();
         }
     }
@@ -104,34 +117,35 @@ public class MainActivity extends AppCompatActivity {
             mEt_user.setText(lastMessage);
         }
     }
+
     public void getSoci (View view) {
         //mEt_user.getText().toString(), mEt_password.getText().toString()
+        String username = mEt_user.getText().toString();
+        String pass = mEt_password.getText().toString();
         APIService mAPIService = ApiUtils.getAPIService();
-        mAPIService.getSessios()
-                .enqueue(new Callback<List<ResponseSessios>>() {
+        mAPIService.doLoginSocis(username, pass)
+                .enqueue(new Callback<List<ResponseSoci>>() {
                     //Si la connexió no s'ha perdut i la comunicació ha estat correcte.
                     //Entra a l'onResponse encara que torni un codi de no haver trobat res.
 
                     @Override
-                    public void onResponse(Call<List<ResponseSessios>> call, Response<List<ResponseSessios>> response) {
+                    public void onResponse(Call<List<ResponseSoci>> call, Response<List<ResponseSoci>> response) {
                         if (response.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, String.valueOf(response.body().size()), Toast.LENGTH_SHORT).show();
-                            if (loginIsOpen) {
-                                Toast.makeText(MainActivity.this, "b", Toast.LENGTH_SHORT).show();
+                            if(response.body().size() > 0) {
+                                nomUsuariChat = response.body().get(0).getNom();
                                 saveMessage();
+                                Toast.makeText(MainActivity.this, nomUsuariChat, Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                 startActivity(intent);
-                            } else {
-                                mEt_user.setText("");
-                                saveMessage();
-                                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                                startActivity(intent);
+                            }
+                            else {
+                                Toast.makeText(MainActivity.this, "Usuari o contrasenya incorrectes!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
                     // Si peta la connexió a Internet.
                     @Override
-                    public void onFailure(Call<List<ResponseSessios>> call, Throwable t) {
+                    public void onFailure(Call<List<ResponseSoci>> call, Throwable t) {
                         Log.d("ErrorLogResponses", t.toString());
                         Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_SHORT).show();
                     }

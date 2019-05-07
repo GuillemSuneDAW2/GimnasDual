@@ -146,7 +146,7 @@ public class ChatFragment extends Fragment {
         Context context = getContext();
 
         SharedPreferences sharedPref = context.getSharedPreferences("KEY", Context.MODE_PRIVATE);
-        String lastMessage = sharedPref.getString("1", "");
+        String lastMessage = sharedPref.getString("2", "");
 
         if (!lastMessage.equals("")){
             ANONYMOUS = lastMessage;

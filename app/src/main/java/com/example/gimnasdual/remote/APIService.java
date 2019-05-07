@@ -14,6 +14,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface APIService {
     /*
@@ -59,8 +60,8 @@ public interface APIService {
     Call<ResponseInscripcions> getInscripcio(@Field("id") int id);
 
     @GET("api/sociAndroid")
-    Call<ResponseSoci> doLoginSocis(@Field("email") String email,
-                                @Field("dni") String dni);
+    Call<List<ResponseSoci>> doLoginSocis(@Query("email") String email,
+                                          @Query("dni") String dni);
 
 
 }
