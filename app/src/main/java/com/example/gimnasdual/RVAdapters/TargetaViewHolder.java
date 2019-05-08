@@ -11,10 +11,10 @@ public class TargetaViewHolder extends RecyclerView.ViewHolder {
     TextView mName;
     ImageView mLogo;
 
-    TargetaViewHolder(View itemView, long cv_id, long tv_id, long iv_id){
+    TargetaViewHolder(View itemView, int cv_id, int tv_id, int iv_id){
         super(itemView);
-        cv = itemView.findViewById((int) cv_id);
-        mName = itemView.findViewById((int) tv_id);
-        mLogo = itemView.findViewById((int) iv_id);
+        cv = itemView.findViewById(cv_id);
+        mName = itemView.findViewById(tv_id);
+        mLogo = itemView.findViewById(iv_id);
     }
 }

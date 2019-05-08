@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -30,16 +29,17 @@ public class HomeActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navView;
     private DownloadTask mMyTask;
-    private ImageView[] imatges = new ImageView[1];
+    private ImageView imatges;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        imatges[0] = findViewById(R.id.imageViewLogo);
+        imatges = findViewById(R.id.imageViewLogo);
 
-        //LoadImage();
+        //Picasso.with(getApplicationContext())
+          //      .load("https://www.espaiwellness.com/wp-content/uploads/2018/07/IndoorCycling.png").into(imatges);
 
         appbar = findViewById(R.id.appbar);
         setSupportActionBar(appbar);
@@ -139,12 +139,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     //Carregar imatges AsyncTask
-    public void LoadImage() {
+    /*public void LoadImage() {
         mMyTask = new DownloadTask(imatges);
         mMyTask.execute();
         Toast.makeText(this, "Logo descarregat amb AsyncTask", Toast.LENGTH_SHORT).show();
 
-    }
+    }*/
     public void getSavedMessage(){
 
         Context context = getApplicationContext();

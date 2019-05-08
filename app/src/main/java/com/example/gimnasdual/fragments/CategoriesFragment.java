@@ -44,6 +44,7 @@ public class CategoriesFragment extends Fragment {
 
         mAPIService = ApiUtils.getAPIService();
 
+
         initData();
         initAdapter();
 
@@ -61,14 +62,11 @@ public class CategoriesFragment extends Fragment {
     }
 
     private void initData() {
-        /*categoriaList = new ArrayList<>();
-        categoriaList.add(new Categoria(77, "Categ1", R.drawable.ic_menu_black_24dp));
-        categoriaList.add(new Categoria(89, "Categ2", R.drawable.ic_menu_black_24dp));
-        categoriaList.add(new Categoria(103, "Categ3", R.drawable.ic_menu_black_24dp));
-    */}
+        getCategories();
+    }
 
 
-    public void getCategories (View view) {
+    public void getCategories () {
         APIService mAPIService = ApiUtils.getAPIService();
         mAPIService.getActCateg()
                 .enqueue(new Callback<List<ResponseCategoriaActivitat>>() {
@@ -77,7 +75,7 @@ public class CategoriesFragment extends Fragment {
 
                     @Override
                     public void onResponse(Call<List<ResponseCategoriaActivitat>> call, Response<List<ResponseCategoriaActivitat>> response) {
-                        if (response.isSuccessful() && response.body().size() < 0) {
+                        if (response.isSuccessful() && response.body().size() > 0) {
                             List<ResponseCategoriaActivitat> myListCategories = response.body();
                         }
                     }
