@@ -13,6 +13,9 @@
         <item
             android:id="@+id/navView_secc3"
             android:title="@string/sales"/>
+        <item
+            android:id="@+id/navView_secc4"
+            android:title="@string/activitats"/>
 
         <item
             android:enabled="false"
@@ -21,11 +24,11 @@
             <menu>
 
                 <item
-                    android:id="@+id/navView_secc4"
+                    android:id="@+id/navView_secc5"
                     android:title="@string/chat"/>
 
                 <item
-                    android:id="@+id/navView_secc5"
+                    android:id="@+id/navView_secc6"
                     android:title="Lorem ipsum 5"/>
 
             </menu>

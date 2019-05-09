@@ -2,6 +2,8 @@ package com.example.gimnasdual.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -28,6 +30,7 @@ public class CategoriesFragment extends Fragment {
     View rootView;
     List<ResponseCategoriaActivitat> categoriaList;
     RecyclerView rv;
+    private FragmentManager mFragmentManager;
 
     private APIService mAPIService;
 
@@ -42,6 +45,7 @@ public class CategoriesFragment extends Fragment {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
+
         mAPIService = ApiUtils.getAPIService();
 
 
@@ -51,10 +55,18 @@ public class CategoriesFragment extends Fragment {
     }
 
     private void initAdapter() {
-        RVcategories adapter = new RVcategories(categoriaList, R.id.rv_categories, R.id.cv_targeta_name, R.id.cv_targeta_image, new ICategoriesInterface() {
+        RVcategories adapter = new RVcategories(categoriaList, R.id.rv_categories, R.id.cv_targeta_name, R.id.image_categoria, new ICategoriesInterface() {
             @Override
             public void sendCategoryId(int categoryId) {
-                Toast.makeText(getContext(), "" + categoryId, Toast.LENGTH_SHORT).show();
+                Fragment newFragment = CategoriesInfoFragment.newInstance();
+
+                Bundle arguments = new Bundle();
+                arguments.putString( "id" , String.valueOf(categoryId));
+                newFragment.setArguments(arguments);
+
+                FragmentTransaction frgTransition = getFragmentManager().beginTransaction();
+                frgTransition.replace(R.id.content_frame, newFragment, String.valueOf(categoryId)).addToBackStack("categoriesInfo");
+                frgTransition.commit();
             }
         });
 

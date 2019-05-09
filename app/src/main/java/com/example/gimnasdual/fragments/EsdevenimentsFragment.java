@@ -44,7 +44,7 @@ public class EsdevenimentsFragment extends Fragment {
     }
 
     private void initAdapter() {
-        RVesdeveniments adapter = new RVesdeveniments(esdevenimentList, R.id.rv_esdeveniments, R.id.cv_targeta_name, R.id.cv_targeta_image);
+        RVesdeveniments adapter = new RVesdeveniments(esdevenimentList, R.id.rv_esdeveniments, R.id.cv_targeta_name, R.id.image_categoria);
         rv.setAdapter(adapter);
     }
     public void getEsdeveniments () {
