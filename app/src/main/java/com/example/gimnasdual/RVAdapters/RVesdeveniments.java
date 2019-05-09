@@ -6,15 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gimnasdual.R;
-import com.example.gimnasdual.model.Esdeveniment;
+import com.example.gimnasdual.data.ResponseEsdeveniment;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class RVesdeveniments extends RecyclerView.Adapter<TargetaViewHolder> {
 
-    List<Esdeveniment> esdevenimentList;
+    List<ResponseEsdeveniment> esdevenimentList;
     int cardView_id, textView_id, imageView_id;
-    public RVesdeveniments(List<Esdeveniment> list, int cardView_id, int textView_id, int imageView_id) {
+    public RVesdeveniments(List<ResponseEsdeveniment> list, int cardView_id, int textView_id, int imageView_id) {
         this.esdevenimentList = list;
         this.cardView_id = cardView_id;
         this.textView_id = textView_id;
@@ -36,6 +37,6 @@ public class RVesdeveniments extends RecyclerView.Adapter<TargetaViewHolder> {
     @Override
     public void onBindViewHolder(TargetaViewHolder mosViewHolder, int i) {
         mosViewHolder.mName.setText(esdevenimentList.get(i).getTitol());
-        mosViewHolder.mLogo.setImageResource(esdevenimentList.get(i).getImage());
+        Picasso.get().load(esdevenimentList.get(i).getImage()).into(mosViewHolder.mLogo);
     }
 }

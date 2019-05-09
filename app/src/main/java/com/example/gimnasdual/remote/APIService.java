@@ -27,25 +27,25 @@ public interface APIService {
     Call<ResponseClients> getClients(@Query("page") String page);
      */
     @GET("api/diaNoHabilsTot")
-    Call<ResponseDiaNoHabil> getDiesNoHabils();
+    Call<List<ResponseDiaNoHabil>> getDiesNoHabils();
 
     @GET("api/sessiosTot")
     Call<List<ResponseSessios>> getSessios();
 
     @GET("api/activitatDirigidasAndroid")
-    Call<ResponseActivitatDirigida> getActivitatDirigidaCateg(@Field("id") int id);
+    Call<List<ResponseActivitatDirigida>> getActivitatDirigidaCateg(@Field("id") int id);
 
     @GET("api/activitatDirigidasAndroid")
-    Call<ResponseActivitatDirigida> getActivitatDirigidaTot();
+    Call<List<ResponseActivitatDirigida>> getActivitatDirigidaTot();
 
     @GET("api/activitatDirigidasAndroid")
-    Call<ResponseActivitatDirigida> getActivitatDirigida(@Field("id") int id);
+    Call<List<ResponseActivitatDirigida>> getActivitatDirigida(@Field("id") int id);
 
     @GET("api/salasAndroid")
-    Call<ResponseSala> getSalaTot();
+    Call<List<ResponseSala>> getSalaTot();
 
     @GET("api/salasAndroid")
-    Call<ResponseSala> getSala(@Field("id") int id);
+    Call<List<ResponseSala>> getSala(@Field("id") int id);
 
     @GET("api/categoriaActivitatsAndroid")
     Call<List<ResponseCategoriaActivitat>> getActCateg();
@@ -54,10 +54,10 @@ public interface APIService {
     Call<List<ResponseEsdeveniment>> getEsdevenimentTot();
 
     @GET("api/esdevenimentsTot")
-    Call<ResponseEsdeveniment> getEsdeveniment(@Field("id") int id);
+    Call<List<ResponseEsdeveniment>> getEsdeveniment(@Field("id") int id);
 
     @GET("api/inscripcionsAndroid")
-    Call<ResponseInscripcions> getInscripcio(@Field("id") int id);
+    Call<List<ResponseInscripcions>> getInscripcio(@Field("id") int id);
 
     @GET("api/sociAndroid")
     Call<List<ResponseSoci>> doLoginSocis(@Query("email") String email,

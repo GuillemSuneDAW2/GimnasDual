@@ -56,7 +56,7 @@ public class CategoriesFragment extends Fragment {
             public void sendCategoryId(int categoryId) {
                 Toast.makeText(getContext(), ""+categoryId, Toast.LENGTH_SHORT).show();
             }
-        }, getContext());
+        });
 
         rv.setAdapter(adapter);
     }
