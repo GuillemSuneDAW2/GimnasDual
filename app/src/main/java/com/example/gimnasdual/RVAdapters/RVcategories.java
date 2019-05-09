@@ -36,15 +36,13 @@ public class RVcategories extends RecyclerView.Adapter<TargetaViewHolder> {
     public TargetaViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cardview_targeta, viewGroup, false);
         TargetaViewHolder pvh = new TargetaViewHolder(v, cardView_id, textView_id, imageView_id);
-
-
         return pvh;
     }
 
     int position;
 
     @Override
-    public void onBindViewHolder(TargetaViewHolder mosViewHolder, int i) {
+    public void onBindViewHolder(TargetaViewHolder mosViewHolder, final int i) {
         position = i;
         mosViewHolder.mName.setText(categoriaList.get(i).getNom());
         Picasso.get()
@@ -53,7 +51,7 @@ public class RVcategories extends RecyclerView.Adapter<TargetaViewHolder> {
         mosViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iCategoriesInterface.sendCategoryId((int) categoriaList.get(position).getId());
+                iCategoriesInterface.sendCategoryId((int) categoriaList.get(i).getId());
             }
         });
     }

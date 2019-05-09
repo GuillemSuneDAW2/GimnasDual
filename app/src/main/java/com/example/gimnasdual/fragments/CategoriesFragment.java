@@ -54,32 +54,29 @@ public class CategoriesFragment extends Fragment {
         RVcategories adapter = new RVcategories(categoriaList, R.id.rv_categories, R.id.cv_targeta_name, R.id.cv_targeta_image, new ICategoriesInterface() {
             @Override
             public void sendCategoryId(int categoryId) {
-                Toast.makeText(getContext(), ""+categoryId, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "" + categoryId, Toast.LENGTH_SHORT).show();
             }
         });
 
         rv.setAdapter(adapter);
     }
 
-    public void getCategories () {
+    public void getCategories() {
         APIService mAPIService = ApiUtils.getAPIService();
         mAPIService.getActCateg()
                 .enqueue(new Callback<List<ResponseCategoriaActivitat>>() {
-                    //Si la connexió no s'ha perdut i la comunicació ha estat correcte.
-                    //Entra a l'onResponse encara que torni un codi de no haver trobat res.
-
                     @Override
                     public void onResponse(Call<List<ResponseCategoriaActivitat>> call, Response<List<ResponseCategoriaActivitat>> response) {
                         if (response.isSuccessful()) {
-                              if(response.body().size() > 0) {
-                                  categoriaList = response.body();
-                                  initAdapter();
-                              }
-                              else {
+                            if (response.body().size() > 0) {
+                                categoriaList = response.body();
+                                initAdapter();
+                            } else {
 
-                              }
+                            }
                         }
                     }
+
                     // Si peta la connexió a Internet.
                     @Override
                     public void onFailure(Call<List<ResponseCategoriaActivitat>> call, Throwable t) {
@@ -87,6 +84,6 @@ public class CategoriesFragment extends Fragment {
                         Toast.makeText(getContext(), "no va", Toast.LENGTH_SHORT).show();
                     }
 
-                    });
+                });
     }
 }
