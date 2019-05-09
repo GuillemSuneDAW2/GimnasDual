@@ -38,8 +38,6 @@ public class HomeActivity extends AppCompatActivity {
 
         imatges = findViewById(R.id.imageViewLogo);
 
-        //Picasso.with(getApplicationContext())
-          //      .load("https://www.espaiwellness.com/wp-content/uploads/2018/07/IndoorCycling.png").into(imatges);
 
         appbar = findViewById(R.id.appbar);
         setSupportActionBar(appbar);

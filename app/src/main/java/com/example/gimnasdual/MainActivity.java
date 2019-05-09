@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private String nomUsuariChat = "";
     private String KEY_LASTMESSAGE = "KEY";
     private String KEY_SHAREDPREF = "1";
-    private boolean isSuccesful = false;
     LinearLayout mLl_loginFields;
     Button mBtn_open;
     boolean loginIsOpen = false;

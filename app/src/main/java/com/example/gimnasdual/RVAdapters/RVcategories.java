@@ -1,5 +1,6 @@
 package com.example.gimnasdual.RVAdapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,14 +27,16 @@ public class RVcategories extends RecyclerView.Adapter<TargetaViewHolder> {
     int cardView_id, textView_id, imageView_id;
     ICategoriesInterface iCategoriesInterface;
     private ImageView[] imatges; // = new ImageView[categoriaList.size()];
+    private Context context;
 
-    public RVcategories(List<ResponseCategoriaActivitat> list, int cardView_id, int textView_id, int imageView_id, ICategoriesInterface iCategoriesInterface
-    ) {
+    public RVcategories(List<ResponseCategoriaActivitat> list, int cardView_id, int textView_id,
+                        int imageView_id, ICategoriesInterface iCategoriesInterface, Context context) {
         this.categoriaList = list;
         this.cardView_id = cardView_id;
         this.textView_id = textView_id;
         this.imageView_id = imageView_id;
         this.iCategoriesInterface = iCategoriesInterface;
+        this.context = context;
     }
 
     @Override
@@ -56,7 +59,7 @@ public class RVcategories extends RecyclerView.Adapter<TargetaViewHolder> {
     public void onBindViewHolder(TargetaViewHolder mosViewHolder, int i) {
         position = i;
         mosViewHolder.mName.setText(categoriaList.get(i).getNom());
-        Picasso.with(mosViewHolder.mLogo.getContext())
+        Picasso.get()
                 .load((categoriaList.get(i).getImage()))
                 .into(mosViewHolder.mLogo);
         mosViewHolder.itemView.setOnClickListener(new View.OnClickListener() {

@@ -45,8 +45,7 @@ public class CategoriesFragment extends Fragment {
         mAPIService = ApiUtils.getAPIService();
 
 
-        initData();
-        initAdapter();
+        getCategories();
 
         return rootView;
     }
@@ -57,14 +56,10 @@ public class CategoriesFragment extends Fragment {
             public void sendCategoryId(int categoryId) {
                 Toast.makeText(getContext(), ""+categoryId, Toast.LENGTH_SHORT).show();
             }
-        });
+        }, getContext());
+
         rv.setAdapter(adapter);
     }
-
-    private void initData() {
-        getCategories();
-    }
-
 
     public void getCategories () {
         APIService mAPIService = ApiUtils.getAPIService();
@@ -75,15 +70,21 @@ public class CategoriesFragment extends Fragment {
 
                     @Override
                     public void onResponse(Call<List<ResponseCategoriaActivitat>> call, Response<List<ResponseCategoriaActivitat>> response) {
-                        if (response.isSuccessful() && response.body().size() > 0) {
-                            List<ResponseCategoriaActivitat> myListCategories = response.body();
+                        if (response.isSuccessful()) {
+                              if(response.body().size() > 0) {
+                                  categoriaList = response.body();
+                                  initAdapter();
+                              }
+                              else {
+
+                              }
                         }
                     }
                     // Si peta la connexió a Internet.
                     @Override
                     public void onFailure(Call<List<ResponseCategoriaActivitat>> call, Throwable t) {
                         Log.d("ErrorLogResponses", t.toString());
-                        Toast.makeText(getContext().getApplicationContext(), "no va", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "no va", Toast.LENGTH_SHORT).show();
                     }
 
                     });
