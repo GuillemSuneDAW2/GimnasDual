@@ -4,21 +4,28 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.gimnasdual.R;
 import com.example.gimnasdual.RVAdapters.RVsales;
-import com.example.gimnasdual.model.*;
+import com.example.gimnasdual.data.ResponseSala;
+import com.example.gimnasdual.remote.APIService;
+import com.example.gimnasdual.remote.ApiUtils;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SalesFragment extends Fragment {
 
     View rootView;
-    List<Sala> salaList;
+    List<ResponseSala> salaList;
     RecyclerView rv;
 
     public SalesFragment() {
@@ -32,8 +39,7 @@ public class SalesFragment extends Fragment {
         rv = rootView.findViewById(R.id.rv_sales);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        initData();
-        initAdapter();
+        getSales();
         return rootView;
     }
 
@@ -41,11 +47,33 @@ public class SalesFragment extends Fragment {
         RVsales adapter = new RVsales(salaList, R.id.rv_sales, R.id.cv_targeta_name, R.id.cv_targeta_image);
         rv.setAdapter(adapter);
     }
+    public void getSales () {
+        APIService mAPIService = ApiUtils.getAPIService();
+        mAPIService.getSalaTot()
+                .enqueue(new Callback<List<ResponseSala>>() {
+                    //Si la connexió no s'ha perdut i la comunicació ha estat correcte.
+                    //Entra a l'onResponse encara que torni un codi de no haver trobat res.
 
-    private void initData() {
-        salaList = new ArrayList<>();
-        salaList.add(new Sala(1, "Sala1", "S1", 50, "Descr1", R.drawable.ic_menu_black_24dp));
-        salaList.add(new Sala(2, "Sala2", "S2", 30, "Descr2", R.drawable.ic_menu_black_24dp));
-        salaList.add(new Sala(3, "Piscina1", "P1", 25, "Descr3", R.drawable.ic_menu_black_24dp));
+                    @Override
+                    public void onResponse(Call<List<ResponseSala>> call, Response<List<ResponseSala>> response) {
+                        if (response.isSuccessful()) {
+                            if(response.body().size() > 0) {
+                                salaList = response.body();
+                                initAdapter();
+                            }
+                            else {
+
+                            }
+                        }
+                    }
+                    // Si peta la connexió a Internet.
+                    @Override
+                    public void onFailure(Call<List<ResponseSala>> call, Throwable t) {
+                        Log.d("ErrorLogResponses", t.toString());
+                        Toast.makeText(getContext(), "no va", Toast.LENGTH_SHORT).show();
+                    }
+
+                });
     }
+
 }

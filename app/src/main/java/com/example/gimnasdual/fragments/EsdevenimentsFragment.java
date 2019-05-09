@@ -40,7 +40,6 @@ public class EsdevenimentsFragment extends Fragment {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new GridLayoutManager(getContext(), 2));
         getEsdeveniments();
-        initAdapter();
         return rootView;
     }
 
