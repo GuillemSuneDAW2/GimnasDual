@@ -32,8 +32,8 @@ public interface APIService {
     @GET("api/sessiosTot")
     Call<List<ResponseSessios>> getSessios();
 
-    @GET("api/activitatDirigidasAndroid")
-    Call<List<ResponseActivitatDirigida>> getActivitatDirigidaCateg(@Field("id") int id);
+    @GET("api/activitatDirigidasCategoriasAndroid?")
+    Call<List<ResponseActivitatDirigida>> getActivitatDirigidaCateg(@Query("id") int id);
 
     @GET("api/activitatDirigidasAndroid")
     Call<List<ResponseActivitatDirigida>> getActivitatDirigidaTot();

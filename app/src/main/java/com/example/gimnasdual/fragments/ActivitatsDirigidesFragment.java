@@ -28,19 +28,41 @@ public class ActivitatsDirigidesFragment extends Fragment {
     View rootView;
     List<ResponseActivitatDirigida> activitatList;
     RecyclerView rv;
+    String stringRebut = "";
+
+    public ActivitatsDirigidesFragment() {
+
+    }
+
+    public static ActivitatsDirigidesFragment newInstance() {
+        return new ActivitatsDirigidesFragment();
+    }
 
     private APIService mAPIService;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_activitats_dirigides, container, false);
+
+
+        try {
+            Bundle arguments = getArguments();
+            stringRebut = arguments.getString("id");
+            Toast.makeText(getContext(), stringRebut, Toast.LENGTH_SHORT).show();
+        } catch (Exception ex) {
+            Log.d(ex.toString(), "exception");
+        }
+
         rv = rootView.findViewById(R.id.rv_activitatsDirigides);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         mAPIService = ApiUtils.getAPIService();
 
-
-        getActDirigides();
+        if (!stringRebut.equals("")) {
+            getActDirigidesByCateg();
+        } else {
+            getActDirigides();
+        }
 
         return rootView;
     }
@@ -64,6 +86,33 @@ public class ActivitatsDirigidesFragment extends Fragment {
                     public void onResponse(Call<List<ResponseActivitatDirigida>> call, Response<List<ResponseActivitatDirigida>> response) {
                         if (response.isSuccessful()) {
                             if (response.body().size() > 0) {
+                                activitatList = response.body();
+                                initAdapter();
+                            } else {
+
+                            }
+                        }
+                    }
+
+                    // Si peta la connexió a Internet.
+                    @Override
+                    public void onFailure(Call<List<ResponseActivitatDirigida>> call, Throwable t) {
+                        Log.d("ErrorLogResponses", t.toString());
+                        Toast.makeText(getContext(), "no va", Toast.LENGTH_SHORT).show();
+                    }
+
+                });
+    }
+    public void getActDirigidesByCateg() {
+        APIService mAPIService = ApiUtils.getAPIService();
+        mAPIService.getActivitatDirigidaCateg(Integer.parseInt(stringRebut))
+                .enqueue(new Callback<List<ResponseActivitatDirigida>>() {
+                    @Override
+                    public void onResponse(Call<List<ResponseActivitatDirigida>> call, Response<List<ResponseActivitatDirigida>> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(getContext(), "funciona?", Toast.LENGTH_SHORT).show();
+                            if (response.body().size() > 0) {
+                                Toast.makeText(getContext(), response.body().size(), Toast.LENGTH_SHORT).show();
                                 activitatList = response.body();
                                 initAdapter();
                             } else {

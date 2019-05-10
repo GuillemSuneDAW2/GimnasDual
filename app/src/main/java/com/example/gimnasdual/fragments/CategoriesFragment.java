@@ -58,7 +58,7 @@ public class CategoriesFragment extends Fragment {
         RVcategories adapter = new RVcategories(categoriaList, R.id.rv_categories, R.id.cv_targeta_name, R.id.image_categoria, new ICategoriesInterface() {
             @Override
             public void sendCategoryId(int categoryId) {
-                Fragment newFragment = CategoriesInfoFragment.newInstance();
+                Fragment newFragment = ActivitatsDirigidesFragment.newInstance();
 
                 Bundle arguments = new Bundle();
                 arguments.putString( "id" , String.valueOf(categoryId));
