@@ -38,8 +38,8 @@ public interface APIService {
     @GET("api/activitatDirigidasAndroid")
     Call<List<ResponseActivitatDirigida>> getActivitatDirigidaTot();
 
-    @GET("api/activitatDirigidasAndroid")
-    Call<List<ResponseActivitatDirigida>> getActivitatDirigida(@Field("id") int id);
+    @GET("api/activitatDirigidaAndroid?")
+    Call<List<ResponseActivitatDirigida>> getActivitatDirigida(@Query("id") int id);
 
     @GET("api/salasAndroid")
     Call<List<ResponseSala>> getSalaTot();

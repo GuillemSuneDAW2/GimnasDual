@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.gimnasdual.Interfaces.ICategoriesInterface;
 import com.example.gimnasdual.R;
 import com.example.gimnasdual.data.ResponseEsdeveniment;
 import com.squareup.picasso.Picasso;
@@ -15,7 +16,7 @@ public class RVesdeveniments extends RecyclerView.Adapter<TargetaViewHolder> {
 
     List<ResponseEsdeveniment> esdevenimentList;
     int cardView_id, textView_id, imageView_id;
-    public RVesdeveniments(List<ResponseEsdeveniment> list, int cardView_id, int textView_id, int imageView_id) {
+    public RVesdeveniments(List<ResponseEsdeveniment> list, int cardView_id, int textView_id, int imageView_id, ICategoriesInterface iCategoriesInterface) {
         this.esdevenimentList = list;
         this.cardView_id = cardView_id;
         this.textView_id = textView_id;

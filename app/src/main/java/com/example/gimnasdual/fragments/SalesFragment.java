@@ -44,7 +44,7 @@ public class SalesFragment extends Fragment {
     }
 
     private void initAdapter() {
-        RVsales adapter = new RVsales(salaList, R.id.rv_sales, R.id.cv_targeta_name, R.id.image_categoria);
+        RVsales adapter = new RVsales(salaList, R.id.rv_sales, R.id.cv_targeta_name, R.id.image_ActCateg);
         rv.setAdapter(adapter);
     }
     public void getSales () {

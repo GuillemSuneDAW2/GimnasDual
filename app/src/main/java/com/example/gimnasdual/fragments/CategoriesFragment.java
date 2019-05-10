@@ -55,7 +55,7 @@ public class CategoriesFragment extends Fragment {
     }
 
     private void initAdapter() {
-        RVcategories adapter = new RVcategories(categoriaList, R.id.rv_categories, R.id.cv_targeta_name, R.id.image_categoria, new ICategoriesInterface() {
+        RVcategories adapter = new RVcategories(categoriaList, R.id.rv_categories, R.id.cv_targeta_name, R.id.image_ActCateg, new ICategoriesInterface() {
             @Override
             public void sendCategoryId(int categoryId) {
                 Fragment newFragment = ActivitatsDirigidesFragment.newInstance();

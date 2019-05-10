@@ -2,6 +2,7 @@ package com.example.gimnasdual.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -58,7 +59,6 @@ public class ActivitatsDirigidesFragment extends Fragment {
         mAPIService = ApiUtils.getAPIService();
 
         if (!stringRebut.equals("")) {
-            Toast.makeText(getContext(), stringRebut, Toast.LENGTH_SHORT).show();
             getActDirigidesByCateg();
         } else {
             getActDirigides();
@@ -68,10 +68,19 @@ public class ActivitatsDirigidesFragment extends Fragment {
     }
 
     private void initAdapter() {
-        RVActivitats adapter = new RVActivitats(activitatList, R.id.rv_categories, R.id.cv_targeta_name, R.id.image_categoria, new ICategoriesInterface() {
+        RVActivitats adapter =
+                new RVActivitats(activitatList, R.id.rv_categories, R.id.cv_targeta_name, R.id.image_ActCateg, new ICategoriesInterface() {
             @Override
             public void sendCategoryId(int categoryId) {
-                Toast.makeText(getContext(), "" + categoryId, Toast.LENGTH_SHORT).show();
+                Fragment newFragment = ActivitatsInfoFragment.newInstance();
+
+                Bundle arguments = new Bundle();
+                arguments.putString( "id" , String.valueOf(categoryId));
+                newFragment.setArguments(arguments);
+
+                FragmentTransaction frgTransition = getFragmentManager().beginTransaction();
+                frgTransition.replace(R.id.content_frame, newFragment, String.valueOf(categoryId)).addToBackStack("activitatsInfo");
+                frgTransition.commit();
             }
         });
 
@@ -98,7 +107,7 @@ public class ActivitatsDirigidesFragment extends Fragment {
                     @Override
                     public void onFailure(Call<List<ResponseActivitatDirigida>> call, Throwable t) {
                         Log.d("ErrorLogResponses", t.toString());
-                        Toast.makeText(getContext(), "no va", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Conexió interrumpida", Toast.LENGTH_SHORT).show();
                     }
 
                 });
@@ -110,9 +119,7 @@ public class ActivitatsDirigidesFragment extends Fragment {
                     @Override
                     public void onResponse(Call<List<ResponseActivitatDirigida>> call, Response<List<ResponseActivitatDirigida>> response) {
                         if (response.isSuccessful()) {
-                            Toast.makeText(getContext(), "funciona?", Toast.LENGTH_SHORT).show();
                             if (response.body().size() > 0) {
-                                Toast.makeText(getContext(), String.valueOf(response.body().size()), Toast.LENGTH_SHORT).show();
                                 activitatList = response.body();
                                 initAdapter();
                             } else {
@@ -120,12 +127,11 @@ public class ActivitatsDirigidesFragment extends Fragment {
                             }
                         }
                     }
-
                     // Si peta la connexió a Internet.
                     @Override
                     public void onFailure(Call<List<ResponseActivitatDirigida>> call, Throwable t) {
                         Log.d("ErrorLogResponses", t.toString());
-                        Toast.makeText(getContext(), "no va 2 ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Conexió interrumpida", Toast.LENGTH_SHORT).show();
                     }
 
                 });
