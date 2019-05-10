@@ -47,7 +47,6 @@ public class ActivitatsDirigidesFragment extends Fragment {
         try {
             Bundle arguments = getArguments();
             stringRebut = arguments.getString("id");
-            Toast.makeText(getContext(), stringRebut, Toast.LENGTH_SHORT).show();
         } catch (Exception ex) {
             Log.d(ex.toString(), "exception");
         }
@@ -59,6 +58,7 @@ public class ActivitatsDirigidesFragment extends Fragment {
         mAPIService = ApiUtils.getAPIService();
 
         if (!stringRebut.equals("")) {
+            Toast.makeText(getContext(), stringRebut, Toast.LENGTH_SHORT).show();
             getActDirigidesByCateg();
         } else {
             getActDirigides();
@@ -112,7 +112,7 @@ public class ActivitatsDirigidesFragment extends Fragment {
                         if (response.isSuccessful()) {
                             Toast.makeText(getContext(), "funciona?", Toast.LENGTH_SHORT).show();
                             if (response.body().size() > 0) {
-                                Toast.makeText(getContext(), response.body().size(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), String.valueOf(response.body().size()), Toast.LENGTH_SHORT).show();
                                 activitatList = response.body();
                                 initAdapter();
                             } else {
@@ -125,7 +125,7 @@ public class ActivitatsDirigidesFragment extends Fragment {
                     @Override
                     public void onFailure(Call<List<ResponseActivitatDirigida>> call, Throwable t) {
                         Log.d("ErrorLogResponses", t.toString());
-                        Toast.makeText(getContext(), "no va", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "no va 2 ", Toast.LENGTH_SHORT).show();
                     }
 
                 });
