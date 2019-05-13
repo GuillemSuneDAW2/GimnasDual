@@ -16,11 +16,14 @@ public class RVesdeveniments extends RecyclerView.Adapter<TargetaViewHolder> {
 
     List<ResponseEsdeveniment> esdevenimentList;
     int cardView_id, textView_id, imageView_id;
+    ICategoriesInterface iCategoriesInterface;
+
     public RVesdeveniments(List<ResponseEsdeveniment> list, int cardView_id, int textView_id, int imageView_id, ICategoriesInterface iCategoriesInterface) {
         this.esdevenimentList = list;
         this.cardView_id = cardView_id;
         this.textView_id = textView_id;
         this.imageView_id = imageView_id;
+        this.iCategoriesInterface = iCategoriesInterface;
     }
 
     @Override
@@ -36,8 +39,14 @@ public class RVesdeveniments extends RecyclerView.Adapter<TargetaViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(TargetaViewHolder mosViewHolder, int i) {
+    public void onBindViewHolder(TargetaViewHolder mosViewHolder, final int i) {
         mosViewHolder.mName.setText(esdevenimentList.get(i).getTitol());
         Picasso.get().load(esdevenimentList.get(i).getImage()).into(mosViewHolder.mLogo);
+        mosViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iCategoriesInterface.sendCategoryId((int) esdevenimentList.get(i).getId());
+            }
+        });
     }
 }

@@ -45,7 +45,6 @@ public class ActivitatsInfoFragment extends Fragment {
         super.onCreate(savedInstanceState);
         Bundle arguments = getArguments();
         stringRebut = arguments.getString("id");
-        Toast.makeText(getContext(), stringRebut, Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.example.gimnasdual.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.gimnasdual.Interfaces.ICategoriesInterface;
 import com.example.gimnasdual.R;
 import com.example.gimnasdual.RVAdapters.RVsales;
 import com.example.gimnasdual.data.ResponseSala;
@@ -44,7 +46,20 @@ public class SalesFragment extends Fragment {
     }
 
     private void initAdapter() {
-        RVsales adapter = new RVsales(salaList, R.id.rv_sales, R.id.cv_targeta_name, R.id.image_ActCateg);
+        RVsales adapter = new RVsales(salaList, R.id.rv_sales, R.id.cv_targeta_name, R.id.image_ActCateg, new ICategoriesInterface() {
+            @Override
+            public void sendCategoryId(int categoryId) {
+                Fragment newFragment = SalaInfoFragment.newInstance();
+
+                Bundle arguments = new Bundle();
+                arguments.putString( "id" , String.valueOf(categoryId));
+                newFragment.setArguments(arguments);
+
+                FragmentTransaction frgTransition = getFragmentManager().beginTransaction();
+                frgTransition.replace(R.id.content_frame, newFragment, String.valueOf(categoryId)).addToBackStack("esdevenimentsInfo");
+                frgTransition.commit();
+            }
+        });
         rv.setAdapter(adapter);
     }
     public void getSales () {

@@ -44,8 +44,8 @@ public interface APIService {
     @GET("api/salasAndroid")
     Call<List<ResponseSala>> getSalaTot();
 
-    @GET("api/salasAndroid")
-    Call<List<ResponseSala>> getSala(@Field("id") int id);
+    @GET("api/salaAndroid?")
+    Call<List<ResponseSala>> getSala(@Query("id") int id);
 
     @GET("api/categoriaActivitatsAndroid")
     Call<List<ResponseCategoriaActivitat>> getActCateg();
@@ -53,8 +53,8 @@ public interface APIService {
     @GET("api/esdevenimentsTot")
     Call<List<ResponseEsdeveniment>> getEsdevenimentTot();
 
-    @GET("api/esdevenimentsTot")
-    Call<List<ResponseEsdeveniment>> getEsdeveniment(@Field("id") int id);
+    @GET("api/esdevenimentAndroid?")
+    Call<List<ResponseEsdeveniment>> getEsdeveniment(@Query("id") int id);
 
     @GET("api/inscripcionsAndroid")
     Call<List<ResponseInscripcions>> getInscripcio(@Field("id") int id);
