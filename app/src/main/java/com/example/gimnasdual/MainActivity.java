@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private String nomUsuariChat = "";
     private String KEY_LASTMESSAGE = "KEY";
     private String KEY_SHAREDPREF = "1";
+    int idSociAGuardar;
     LinearLayout mLl_loginFields;
     Button mBtn_open;
     boolean loginIsOpen = false;
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString(KEY_SHAREDPREF, mEt_user.getText().toString());
             editor.putString("2", nomUsuariChat);
+            editor.putString("3", String.valueOf(idSociAGuardar));
             editor.commit();
         }
     }
@@ -132,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             if(response.body().size() > 0) {
                                 nomUsuariChat = response.body().get(0).getNom();
+                                idSociAGuardar = (int) response.body().get(0).getId();
                                 saveMessage();
                                 Toast.makeText(MainActivity.this, nomUsuariChat, Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);

@@ -3,9 +3,11 @@ package com.example.gimnasdual.remote;
 import com.example.gimnasdual.data.ResponseActivitatDirigida;
 import com.example.gimnasdual.data.ResponseCategoriaActivitat;
 import com.example.gimnasdual.data.ResponseDiaNoHabil;
+import com.example.gimnasdual.data.ResponseDies;
 import com.example.gimnasdual.data.ResponseEsdeveniment;
 import com.example.gimnasdual.data.ResponseInscripcions;
 import com.example.gimnasdual.data.ResponseSala;
+import com.example.gimnasdual.data.ResponseSessioDia;
 import com.example.gimnasdual.data.ResponseSessios;
 import com.example.gimnasdual.data.ResponseSoci;
 
@@ -14,20 +16,23 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface APIService {
-    /*
-    @FormUrlEncoded
-    @POST("api/users")
-    Call<ResponseRegister> registerEmployee(@Field("name") String name,
-                                            @Field("job") String job);
 
-    @GET("api/users")
-    Call<ResponseClients> getClients(@Query("page") String page);
-     */
     @GET("api/diaNoHabilsTot")
     Call<List<ResponseDiaNoHabil>> getDiesNoHabils();
+
+    @GET("api/diasAndroid")
+    Call<List<ResponseDies>> getDiesAndroid();
+
+    @POST("api/inscripcioAndroid")
+    Call<List<ResponseInscripcions>> postNewInscription(@Field("Soci_Id") int Soci_Id,
+                                                        @Field("Sessio_Id") int Sessio_Id);
+
+    @GET("api/sessiosDia")
+    Call<List<ResponseSessioDia>> getSessioDia(@Query("dia") String dia);
 
     @GET("api/sessiosTot")
     Call<List<ResponseSessios>> getSessios();
@@ -62,6 +67,4 @@ public interface APIService {
     @GET("api/sociAndroid")
     Call<List<ResponseSoci>> doLoginSocis(@Query("email") String email,
                                           @Query("dni") String dni);
-
-
 }

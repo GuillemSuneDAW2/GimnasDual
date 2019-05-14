@@ -4,7 +4,7 @@ public class ApiUtils {
 
     private ApiUtils() {}
 
-    public static final String BASE_URL = "http://172.16.12.25:53102/";
+    public static final String BASE_URL = "http://172.16.12.17:53102/";
 
     public static APIService getAPIService() {
 
