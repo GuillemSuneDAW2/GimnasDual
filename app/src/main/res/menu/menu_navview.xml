@@ -16,11 +16,15 @@
         <item
             android:id="@+id/navView_secc4"
             android:title="@string/activitats"/>
+        <item
+            android:id="@+id/navView_secc7"
+            android:title="@string/sessions"/>
 
         <item
             android:enabled="false"
             android:id="@+id/navView_subheader"
             android:title="@string/secci_socis">
+
             <menu>
 
                 <item
@@ -29,7 +33,7 @@
 
                 <item
                     android:id="@+id/navView_secc6"
-                    android:title="Lorem ipsum 5"/>
+                    android:title="@string/rutina"/>
 
             </menu>
         </item>

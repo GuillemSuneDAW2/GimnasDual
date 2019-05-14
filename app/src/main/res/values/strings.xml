@@ -17,4 +17,7 @@
     <string name="secci_socis">Secció Socis</string>
     <string name="webServiceURL">http://172.16.12.25:53102/</string>
     <string name="activitats">Activitats</string>
+    <string name="rutina">Rutina</string>
+    <string name="nomApp">Les Cremades</string>
+    <string name="sessions">Sessions</string>
 </resources>
