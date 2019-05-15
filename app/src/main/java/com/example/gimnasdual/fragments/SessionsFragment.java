@@ -19,6 +19,7 @@ import com.example.gimnasdual.R;
 import com.example.gimnasdual.data.ResponseDies;
 import com.example.gimnasdual.data.ResponseInscripcions;
 import com.example.gimnasdual.data.ResponseSessioDia;
+import com.example.gimnasdual.model.Inscripcio;
 import com.example.gimnasdual.model.SessionsAdapter;
 import com.example.gimnasdual.model.SessionsDiaAdapter;
 import com.example.gimnasdual.remote.APIService;
@@ -41,6 +42,7 @@ public class SessionsFragment extends Fragment {
     String textSeleccionat;
     int idSoci, idSessio;
     SessionsDiaAdapter spinnAdapter;
+    Inscripcio ins = new Inscripcio(idSessio, idSoci);
 
     public SessionsFragment() {
 
@@ -63,13 +65,13 @@ public class SessionsFragment extends Fragment {
                 lvSessions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    getSavedMessage();
-                    idSessio = (int) listSessioDia.get(position).getId();
-                    if(idSoci != 0) {
-                        crearDialog();
-                    } else {
-                        Toast.makeText(getContext(), "Voste no es soci!", Toast.LENGTH_SHORT).show();
-                    }
+                        getSavedMessage();
+                        idSessio = (int) listSessioDia.get(position).getId();
+                        if (idSoci != 0) {
+                            crearDialog();
+                        } else {
+                            Toast.makeText(getContext(), "Voste no es soci!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
             }
@@ -77,8 +79,9 @@ public class SessionsFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-            }});
-            return rootView;
+            }
+        });
+        return rootView;
     }
 
     public void getDies() {
@@ -108,6 +111,7 @@ public class SessionsFragment extends Fragment {
 
                 });
     }
+
     public void getSessiosPerDia() {
         APIService mAPIService = ApiUtils.getAPIService();
         mAPIService.getSessioDia(textSeleccionat)
@@ -138,51 +142,67 @@ public class SessionsFragment extends Fragment {
 
                 });
     }
+
     public void crearDialog() {
-        new AlertDialog.Builder(getContext())
-                .setTitle("Inscripció")
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Inscripció")
                 .setMessage("Estas segur que et vols inscriure??")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                .setCancelable(true)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(), "Entra al dialog?", Toast.LENGTH_SHORT).show();
                         getInscripcio();
+
                     }
                 })
 
                 // A null listener allows the button to dismiss the dialog and take no further action.
-                .setNegativeButton(android.R.string.no, null)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
+
     public void getInscripcio() {
         APIService mAPIService = ApiUtils.getAPIService();
+        Toast.makeText(getContext(), "???", Toast.LENGTH_SHORT).show();
         mAPIService.postNewInscription(idSoci, idSessio)
-                .enqueue(new Callback<List<ResponseInscripcions>>() {
+                .enqueue(new Callback<Integer>() {
                     @Override
-                    public void onResponse(Call<List<ResponseInscripcions>> call, Response<List<ResponseInscripcions>> response) {
+                    public void onResponse(Call<Integer> call, Response<Integer> response) {
                         if (response.isSuccessful()) {
-                            if (response.body()!=null) {
+                            if (response.body() == 0) {
                                 Toast.makeText(getContext(), "Inscrit correctament", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getContext(), "No s'ha pogut fer la inscripció", Toast.LENGTH_SHORT).show();
+                            } else if (response.body() == 1) {
+                                Toast.makeText(getContext(), "Ja estas inscrit", Toast.LENGTH_SHORT).show();
+                            } else if (response.body() == 2) {
+                                Toast.makeText(getContext(), "Ja estas inscrit a una altra sessio a la mateixa hora", Toast.LENGTH_SHORT).show();
+                            } else if (response.body() == 3) {
+                                Toast.makeText(getContext(), "Servei no disponible temporalment", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
 
                     // Si peta la connexió a Internet.
                     @Override
-                    public void onFailure(Call<List<ResponseInscripcions>> call, Throwable t) {
+                    public void onFailure(Call<Integer> call, Throwable t) {
                         Log.d("ErrorLogResponses", t.toString());
                         Toast.makeText(getContext(), "no va", Toast.LENGTH_SHORT).show();
                     }
 
                 });
     }
-    public void getSavedMessage(){
+
+    public void getSavedMessage() {
         Context context = getContext();
 
         SharedPreferences sharedPref = context.getSharedPreferences("KEY", Context.MODE_PRIVATE);
         String stringRebut = sharedPref.getString("3", "");
-        if(!stringRebut.equals("")){
+        if (!stringRebut.equals("")) {
             idSoci = Integer.parseInt(sharedPref.getString("3", ""));
         } else {
             idSoci = 0;

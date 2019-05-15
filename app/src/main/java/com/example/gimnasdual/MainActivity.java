@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 mEt_user.setText("");
                 saveMessage();
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                intent.putExtra("isSoci", false);
                 startActivity(intent);
             }
         });
@@ -138,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
                                 saveMessage();
                                 Toast.makeText(MainActivity.this, nomUsuariChat, Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                intent.putExtra("isSoci", true);
                                 startActivity(intent);
                             }
                             else {

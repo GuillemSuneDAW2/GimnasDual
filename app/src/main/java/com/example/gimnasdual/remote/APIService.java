@@ -16,7 +16,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface APIService {
@@ -27,9 +26,11 @@ public interface APIService {
     @GET("api/diasAndroid")
     Call<List<ResponseDies>> getDiesAndroid();
 
-    @POST("api/inscripcioAndroid")
-    Call<List<ResponseInscripcions>> postNewInscription(@Field("Soci_Id") int Soci_Id,
-                                                        @Field("Sessio_Id") int Sessio_Id);
+
+    @GET("api/inscripcioAndroid?")
+    //@FormUrlEncoded
+    Call<Integer> postNewInscription(@Query("Soci_Id") int Soci_Id,
+                                                        @Query("Sessio_Id") int Sessio_Id);
 
     @GET("api/sessiosDia")
     Call<List<ResponseSessioDia>> getSessioDia(@Query("dia") String dia);

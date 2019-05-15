@@ -9,6 +9,6 @@
 
     <color name="backgroundTextBox">#d3e6e5</color>
 
-    <color name="colorAccent">#ffffff</color>
+    <color name="colorAccent">#000000</color>
     <color name="colorAccentDark">#000000</color>
 </resources>

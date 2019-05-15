@@ -19,7 +19,7 @@
 
     <EditText
         android:id="@+id/login_et_user"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@color/colorSecondaryLight"
         android:hint="@string/username"
@@ -28,7 +28,7 @@
 
     <EditText
         android:id="@+id/login_et_password"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@color/colorSecondaryLight"
         android:hint="@string/password"

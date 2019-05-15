@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.gimnasdual.AsyncTask.DownloadTask;
 import com.example.gimnasdual.fragments.ActivitatsDirigidesFragment;
@@ -32,14 +33,16 @@ public class HomeActivity extends AppCompatActivity {
     private NavigationView navView;
     private DownloadTask mMyTask;
     private ImageView imatges;
+    private boolean isSoci = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        imatges = findViewById(R.id.imageViewLogo);
+        isSoci = getIntent().getBooleanExtra("isSoci", false);
 
+        imatges = findViewById(R.id.imageViewLogo);
 
         appbar = findViewById(R.id.appbar);
         setSupportActionBar(appbar);
@@ -53,7 +56,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //Menu navViewMenu = navView.getMenu().getItem(R.id.navView_subheader)
         //navView.getMenu().findItem(R.id.navView_subheader).setEnabled(true);
-        getSavedMessage();
+        //getSavedMessage();
 
         navView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -101,13 +104,17 @@ public class HomeActivity extends AppCompatActivity {
                                 getSupportActionBar().setTitle(menuItem.getTitle());
                                 break;
                             case R.id.navView_secc5:
-                                fragment = new ChatFragment();
-                                getSupportFragmentManager().beginTransaction()
-                                        .replace(R.id.content_frame, fragment).addToBackStack("chat")
-                                        .commit();
+                                if(isSoci) {
+                                    fragment = new ChatFragment();
+                                    getSupportFragmentManager().beginTransaction()
+                                            .replace(R.id.content_frame, fragment).addToBackStack("chat")
+                                            .commit();
 
-                                menuItem.setChecked(true);
-                                getSupportActionBar().setTitle(menuItem.getTitle());
+                                    menuItem.setChecked(true);
+                                    getSupportActionBar().setTitle(menuItem.getTitle());
+                                } else {
+                                    Toast.makeText(HomeActivity.this, "Zona soci", Toast.LENGTH_SHORT).show();
+                                }
                                 break;
 
                             case R.id.navView_secc7:
@@ -120,13 +127,17 @@ public class HomeActivity extends AppCompatActivity {
                                 getSupportActionBar().setTitle(menuItem.getTitle());
                                 break;
                             case R.id.navView_secc6:
-                                fragment = new RutinaFragment();
-                                getSupportFragmentManager().beginTransaction()
-                                        .replace(R.id.content_frame, fragment).addToBackStack("rutina")
-                                        .commit();
+                                if(isSoci) {
+                                    fragment = new RutinaFragment();
+                                    getSupportFragmentManager().beginTransaction()
+                                            .replace(R.id.content_frame, fragment).addToBackStack("rutina")
+                                            .commit();
 
-                                menuItem.setChecked(true);
-                                getSupportActionBar().setTitle(menuItem.getTitle());
+                                    menuItem.setChecked(true);
+                                    getSupportActionBar().setTitle(menuItem.getTitle());
+                                } else {
+                                    Toast.makeText(HomeActivity.this, "Zona soci", Toast.LENGTH_SHORT).show();
+                                }
                                 break;
                         }
                         drawerLayout.closeDrawers();
@@ -178,7 +189,7 @@ public class HomeActivity extends AppCompatActivity {
         String lastMessage = sharedPref.getString("1", "");
 
         if (!lastMessage.equals("")){
-            navView.getMenu().findItem(R.id.navView_subheader).setEnabled(true);
+            isSoci = true;
         }
     }
 }
