@@ -60,7 +60,6 @@ public class SessionsFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 textSeleccionat = listDies.get(position).getDia();
-                Toast.makeText(getContext(), textSeleccionat, Toast.LENGTH_SHORT).show();
                 getSessiosPerDia();
                 lvSessions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -150,7 +149,6 @@ public class SessionsFragment extends Fragment {
                 .setCancelable(true)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getContext(), "Entra al dialog?", Toast.LENGTH_SHORT).show();
                         getInscripcio();
 
                     }
@@ -169,7 +167,6 @@ public class SessionsFragment extends Fragment {
 
     public void getInscripcio() {
         APIService mAPIService = ApiUtils.getAPIService();
-        Toast.makeText(getContext(), "???", Toast.LENGTH_SHORT).show();
         mAPIService.postNewInscription(idSoci, idSessio)
                 .enqueue(new Callback<Integer>() {
                     @Override

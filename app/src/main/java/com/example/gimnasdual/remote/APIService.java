@@ -30,7 +30,7 @@ public interface APIService {
     @GET("api/inscripcioAndroid?")
     //@FormUrlEncoded
     Call<Integer> postNewInscription(@Query("Soci_Id") int Soci_Id,
-                                                        @Query("Sessio_Id") int Sessio_Id);
+                                     @Query("Sessio_Id") int Sessio_Id);
 
     @GET("api/sessiosDia")
     Call<List<ResponseSessioDia>> getSessioDia(@Query("dia") String dia);

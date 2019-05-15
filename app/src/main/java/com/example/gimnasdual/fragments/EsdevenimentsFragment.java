@@ -57,7 +57,6 @@ public class EsdevenimentsFragment extends Fragment {
                 Bundle arguments = new Bundle();
                 arguments.putString( "id" , String.valueOf(categoryId));
                 newFragment.setArguments(arguments);
-                Toast.makeText(getContext(), String.valueOf(categoryId), Toast.LENGTH_SHORT).show();
 
                 FragmentTransaction frgTransition = getFragmentManager().beginTransaction();
                 frgTransition.replace(R.id.content_frame, newFragment, String.valueOf(categoryId)).addToBackStack("esdevenimentsInfo");

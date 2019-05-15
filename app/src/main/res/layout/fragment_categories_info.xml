@@ -1,72 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ActivitatsInfoFragment">
-
-    <TextView
-        android:id="@+id/tv_Intensitat"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="69dp"
-        android:layout_marginEnd="69dp"
-        android:layout_marginBottom="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_DescAct"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_TipusAct" />
+    android:orientation="vertical"
+    tools:context=".fragments.ActivitatsInfoFragment"
+    android:padding="15dp">
+    <ImageView
+        android:id="@+id/image_ActCateg"
+        android:layout_width="236dp"
+        android:layout_height="185dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/cardview_border" />
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/linear_layout_border"
+    android:layout_gravity="center"
+    android:padding="20dp"
+    >
 
     <TextView
         android:id="@+id/tv_NomAct3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="62dp"
-        android:layout_marginEnd="62dp"
-        android:layout_marginBottom="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_TipusAct"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_ActCateg" />
-
-    <ImageView
-        android:id="@+id/image_ActCateg"
         android:layout_width="230dp"
-        android:layout_height="185dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_NomAct3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="84dp"
+        android:layout_gravity="center" />
 
     <TextView
         android:id="@+id/tv_TipusAct"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_Intensitat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_NomAct3" />
+        android:layout_width="230dp"
+        android:layout_height="100dp"
+        android:textSize="16sp"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/tv_Intensitat"
+        android:layout_width="230dp"
+        android:layout_height="84dp"
+        android:layout_gravity="center"/>
 
     <EditText
         android:id="@+id/tv_DescAct"
-        android:layout_width="286dp"
+        android:layout_width="230dp"
         android:layout_height="117dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="111dp"
         android:ems="10"
+        android:layout_gravity="center"
         android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Intensitat" />
+        android:inputType="textMultiLine" />
+</LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

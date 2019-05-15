@@ -4,25 +4,28 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:background="@color/colorPrimaryLight">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView_targeta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#fff"
+        android:background="@color/colorPrimaryLight"
         app:cardCornerRadius="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:background="@color/colorPrimaryLight">
 
             <ImageView
                 android:id="@+id/image_ActCateg"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryLight"/>
 
             <TextView
                 android:id="@+id/cv_targeta_name"
@@ -30,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#fff"
                 android:textAlignment="center"
-                android:background="#44d2e2"/>
+                android:background="@color/colorSecondary"/>
 
         </LinearLayout>
 
