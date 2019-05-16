@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +28,7 @@ public class EsdevenimentsInfoFragment extends Fragment {
     View rootView;
     String stringRebut;
     TextView lloc, nom, tipus, data;
-    EditText desc;
+    TextView desc;
     ImageView image;
 
     public EsdevenimentsInfoFragment() {

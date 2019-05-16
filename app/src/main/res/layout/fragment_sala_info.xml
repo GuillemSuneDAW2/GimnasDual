@@ -6,48 +6,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.SalaInfoFragment"
-    android:padding="15dp">
+    android:padding="15dp"
+    tools:context=".fragments.SalaInfoFragment">
+
     <ImageView
         android:id="@+id/ivSala"
         android:layout_width="236dp"
         android:layout_height="185dp"
         android:layout_gravity="center"
-        android:background="@drawable/cardview_border"
         android:layout_marginBottom="25dp"
-        />
+        android:background="@drawable/cardview_border" />
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/linear_layout_border"
         android:layout_gravity="center"
-        android:padding="20dp"
-        >
-    <TextView
-        android:id="@+id/tv_Aformanet"
-        android:layout_width="230dp"
-        android:layout_height="84dp" />
+        android:background="@drawable/linear_layout_border"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <TextView
-        android:id="@+id/tv_CodiSala"
-        android:layout_width="230dp"
-        android:layout_height="84dp" />
+        <TextView
+            android:id="@+id/lbNom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nomSalaInfo" />
 
-    <TextView
-        android:id="@+id/tv_NomSala"
-        android:layout_width="230dp"
-        android:layout_height="84dp"/>
+        <TextView
+            android:id="@+id/tv_NomSala"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp" />
 
+        <TextView
+            android:id="@+id/lbAforament"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/aforamentSalaInfo" />
 
-    <EditText
-        android:id="@+id/tv_DescSala"
-        android:layout_width="230dp"
-        android:layout_height="84dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
+        <TextView
+            android:id="@+id/tv_Aformanet"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp" />
 
-        />
+        <TextView
+            android:id="@+id/lbCodi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/codiSalaInfo" />
+
+        <TextView
+            android:id="@+id/tv_CodiSala"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp" />
+
+        <TextView
+            android:id="@+id/lbDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/descripcio" />
+
+        <TextView
+            android:id="@+id/tv_DescSala"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp" />
     </LinearLayout>
 </LinearLayout>

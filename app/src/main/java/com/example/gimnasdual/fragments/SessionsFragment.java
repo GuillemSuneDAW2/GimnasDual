@@ -93,7 +93,7 @@ public class SessionsFragment extends Fragment {
                             if (response.body().size() > 0) {
                                 SessionsAdapter spinnAdapter;
                                 listDies = response.body();
-                                spinnAdapter = new SessionsAdapter(getContext(), android.R.layout.activity_list_item, listDies);
+                                spinnAdapter = new SessionsAdapter(getContext(), android.R.layout.list_content, listDies);
                                 spinnSessions.setAdapter(spinnAdapter);
                             } else {
 

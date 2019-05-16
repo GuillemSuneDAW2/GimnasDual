@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +28,7 @@ public class ActivitatsInfoFragment extends Fragment {
     View rootView;
     String stringRebut;
     TextView tvNom, tvTipus, tvIntensitat;
-    EditText tvDesc;
+    TextView tvDesc;
     ImageView image;
 
     public ActivitatsInfoFragment() {

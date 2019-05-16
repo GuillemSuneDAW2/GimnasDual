@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.EsdevenimentsInfoFragment"
-    android:padding="15dp">
+    android:padding="15dp"
+    tools:context=".fragments.EsdevenimentsInfoFragment">
 
     <ImageView
         android:id="@+id/imageEsdev"
@@ -15,41 +15,81 @@
         android:layout_height="185dp"
         android:layout_gravity="center"
         android:layout_marginBottom="25dp"
-        android:background="@drawable/cardview_border"/>
+        android:background="@drawable/cardview_border" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/linear_layout_border"
         android:layout_gravity="center"
-        android:padding="20dp"
-        >
-    <TextView
-        android:id="@+id/tv_Tipus"
-        android:layout_width="230dp"
-        android:layout_height="84dp" />
+        android:background="@drawable/linear_layout_border"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <TextView
-        android:id="@+id/tv_Data"
-        android:layout_width="230dp"
-        android:layout_height="84dp" />
+        <TextView
+            android:id="@+id/lbNom"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="@string/nomEsdevAct" />
 
-    <TextView
-        android:id="@+id/tv_Lloc"
-        android:layout_width="230dp"
-        android:layout_height="84dp" />
+        <TextView
+            android:id="@+id/tv_Nom"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp" />
 
-    <TextView
-        android:id="@+id/tv_Nom"
-        android:layout_width="230dp"
-        android:layout_height="84dp" />
+        <TextView
+            android:id="@+id/lbTipus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tipusEsdevInfo" />
 
-    <EditText
-        android:id="@+id/tv_desc"
-        android:layout_width="230dp"
-        android:layout_height="84dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine" />
+        <TextView
+            android:id="@+id/tv_Tipus"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp" />
+
+        <TextView
+            android:id="@+id/lbData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dataEsdevInfo" />
+
+        <TextView
+            android:id="@+id/tv_Data"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp" />
+
+        <TextView
+            android:id="@+id/lbLloc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/llocEsdevInfo" />
+
+        <TextView
+            android:id="@+id/tv_Lloc"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp" />
+
+        <TextView
+            android:id="@+id/lbDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/descripcio" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp" />
     </LinearLayout>
 </LinearLayout>

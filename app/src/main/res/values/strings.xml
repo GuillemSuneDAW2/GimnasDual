@@ -20,4 +20,16 @@
     <string name="rutina">Rutina</string>
     <string name="nomApp">Les Cremades</string>
     <string name="sessions">Sessions</string>
+    <string name="nomActInfo">Nom:</string>
+    <string name="tipusActInfo">Tipus:</string>
+    <string name="intensitatActInfo">Intensitat:</string>
+    <string name="descripcio">Descripció:</string>
+    <string name="llocEsdevInfo">Lloc:</string>
+    <string name="dataEsdevInfo">Data:</string>
+    <string name="tipusEsdevInfo">Tipus:</string>
+    <string name="nomEsdevAct">Nom:</string>
+    <string name="nomSalaInfo">Nom:</string>
+    <string name="codiSalaInfo">Codi:</string>
+    <string name="aforamentSalaInfo">Aforament:</string>
+    <string name="welcome">Benvingut a la nostra aplicació</string>
 </resources>

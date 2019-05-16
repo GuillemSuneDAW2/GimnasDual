@@ -137,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
                                 nomUsuariChat = response.body().get(0).getNom();
                                 idSociAGuardar = (int) response.body().get(0).getId();
                                 saveMessage();
-                                Toast.makeText(MainActivity.this, nomUsuariChat, Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                 intent.putExtra("isSoci", true);
                                 startActivity(intent);

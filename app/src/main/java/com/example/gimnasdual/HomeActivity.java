@@ -12,10 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.gimnasdual.AsyncTask.DownloadTask;
 import com.example.gimnasdual.fragments.ActivitatsDirigidesFragment;
 import com.example.gimnasdual.fragments.CategoriesFragment;
 import com.example.gimnasdual.fragments.ChatFragment;
@@ -23,6 +22,7 @@ import com.example.gimnasdual.fragments.EsdevenimentsFragment;
 import com.example.gimnasdual.fragments.RutinaFragment;
 import com.example.gimnasdual.fragments.SalesFragment;
 import com.example.gimnasdual.fragments.SessionsFragment;
+import com.example.gimnasdual.fragments.welcome;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -31,9 +31,8 @@ public class HomeActivity extends AppCompatActivity {
     private Toolbar appbar;
     private DrawerLayout drawerLayout;
     private NavigationView navView;
-    private DownloadTask mMyTask;
-    private ImageView imatges;
     private boolean isSoci = false;
+    private LinearLayout fragmentWelcome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,6 @@ public class HomeActivity extends AppCompatActivity {
 
         isSoci = getIntent().getBooleanExtra("isSoci", false);
 
-        imatges = findViewById(R.id.imageViewLogo);
 
         appbar = findViewById(R.id.appbar);
         setSupportActionBar(appbar);
@@ -54,9 +52,6 @@ public class HomeActivity extends AppCompatActivity {
 
         navView = findViewById(R.id.navview);
 
-        //Menu navViewMenu = navView.getMenu().getItem(R.id.navView_subheader)
-        //navView.getMenu().findItem(R.id.navView_subheader).setEnabled(true);
-        //getSavedMessage();
 
         navView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -144,6 +139,10 @@ public class HomeActivity extends AppCompatActivity {
                         return true;
                     }
                 });
+        Fragment fragment = new welcome();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_frame, fragment).addToBackStack("home")
+                .commit();
     }
 
     @Override
@@ -173,14 +172,6 @@ public class HomeActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    //Carregar imatges AsyncTask
-    /*public void LoadImage() {
-        mMyTask = new DownloadTask(imatges);
-        mMyTask.execute();
-        Toast.makeText(this, "Logo descarregat amb AsyncTask", Toast.LENGTH_SHORT).show();
-
-    }*/
     public void getSavedMessage(){
 
         Context context = getApplicationContext();
