@@ -3,4 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.RutinaFragment"/>
+    tools:context=".fragments.RutinaFragment">
+
+    <LinearLayout
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dies"
+            android:textSize="25sp"
+            android:layout_gravity="center" />
+
+        <ListView
+            android:id="@+id/workout_lv_dates"
+            android:layout_width="match_parent"
+            android:background="#fff"
+            android:layout_height="350dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_addDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Afegir" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

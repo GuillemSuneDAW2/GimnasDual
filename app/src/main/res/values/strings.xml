@@ -32,4 +32,12 @@
     <string name="codiSalaInfo">Codi:</string>
     <string name="aforamentSalaInfo">Aforament:</string>
     <string name="welcome">Benvingut a la nostra aplicació</string>
+    <string-array name="exercicis">
+        <item>Pull Up</item>
+        <item>Push Up</item>
+        <item>Squat</item>
+        <item>Dips</item>
+        <item>Bench Press</item>
+        <item>Leg Press</item>
+    </string-array>
 </resources>
