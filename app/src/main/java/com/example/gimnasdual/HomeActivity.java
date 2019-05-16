@@ -105,7 +105,6 @@ public class HomeActivity extends AppCompatActivity {
                                             .replace(R.id.content_frame, fragment).addToBackStack("chat")
                                             .commit();
 
-                                    menuItem.setChecked(true);
                                     getSupportActionBar().setTitle(menuItem.getTitle());
                                 } else {
                                     Toast.makeText(HomeActivity.this, "Zona soci", Toast.LENGTH_SHORT).show();
@@ -128,7 +127,6 @@ public class HomeActivity extends AppCompatActivity {
                                             .replace(R.id.content_frame, fragment).addToBackStack("rutina")
                                             .commit();
 
-                                    menuItem.setChecked(true);
                                     getSupportActionBar().setTitle(menuItem.getTitle());
                                 } else {
                                     Toast.makeText(HomeActivity.this, "Zona soci", Toast.LENGTH_SHORT).show();
