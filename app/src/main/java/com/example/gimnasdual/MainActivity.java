@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         mBtn_enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!mEt_user.getText().toString().equals("") && !mEt_password.getText().toString().equals("")) {
+                if (!mEt_user.getText().toString().equals("") && !mEt_password.getText().toString().equals("")) {
                     getSoci(v);
                 } else {
                     Toast.makeText(MainActivity.this, "Hi han camps buits!", Toast.LENGTH_SHORT).show();
@@ -98,8 +98,9 @@ public class MainActivity extends AppCompatActivity {
         getSavedMessage();
 
     }
-    public void saveMessage(){
-        if (!mEt_user.getText().toString().equals("")){
+
+    public void saveMessage() {
+        if (!mEt_user.getText().toString().equals("")) {
             Context context = getApplicationContext();
             SharedPreferences sharedPref = context.getSharedPreferences(KEY_LASTMESSAGE, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
@@ -109,18 +110,19 @@ public class MainActivity extends AppCompatActivity {
             editor.commit();
         }
     }
-    public void getSavedMessage(){
+
+    public void getSavedMessage() {
         Context context = getApplicationContext();
 
         SharedPreferences sharedPref = context.getSharedPreferences(KEY_LASTMESSAGE, Context.MODE_PRIVATE);
         String lastMessage = sharedPref.getString(KEY_SHAREDPREF, "");
 
-        if (!lastMessage.equals("")){
+        if (!lastMessage.equals("")) {
             mEt_user.setText(lastMessage);
         }
     }
 
-    public void getSoci (View view) {
+    public void getSoci(View view) {
         //mEt_user.getText().toString(), mEt_password.getText().toString()
         String username = mEt_user.getText().toString();
         String pass = mEt_password.getText().toString();
@@ -133,19 +135,19 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<List<ResponseSoci>> call, Response<List<ResponseSoci>> response) {
                         if (response.isSuccessful()) {
-                            if(response.body().size() > 0) {
+                            if (response.body().size() > 0) {
                                 nomUsuariChat = response.body().get(0).getNom();
                                 idSociAGuardar = (int) response.body().get(0).getId();
                                 saveMessage();
                                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                 intent.putExtra("isSoci", true);
                                 startActivity(intent);
-                            }
-                            else {
+                            } else {
                                 Toast.makeText(MainActivity.this, "Usuari o contrasenya incorrectes!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
+
                     // Si peta la connexió a Internet.
                     @Override
                     public void onFailure(Call<List<ResponseSoci>> call, Throwable t) {
